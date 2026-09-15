@@ -1,0 +1,9 @@
+module main(
+	//pinout assignmnet
+	input [9:0] SW,
+	output [9:0] LEDR
+);
+	//code
+	assign LEDR[9:0] = ~SW[9:0];
+	
+endmodule
