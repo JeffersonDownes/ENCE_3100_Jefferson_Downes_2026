@@ -1,7 +1,7 @@
 // ENCE 3100 - Lab 2 - Numbers and Displays
 // Target: existing DE10-Lite / MAX 10 project (10 switches, 6 displays).
 //
-// All seven parts are kept here as separately labeled comment blocks.
+// All five parts are kept here as separately labeled comment blocks.
 // To run a part:
 //   1. Comment out the two assignments in IDLE below.
 //   2. Remove the /* and */ surrounding ONLY the desired PART block.
@@ -128,47 +128,4 @@ module main(
     // END PART V
 */
 
-/*
-    // BEGIN PART VI
-    // PART VI - Algorithmic BCD: +, >, if/else, and subtraction.
-    // Same KEY loading and SW9 display views as Part V.
-    // Compare BCD_Adder_Algorithm with BCD_Adder_2 in the RTL Viewer.
-    wire [3:0] p6_s0, p6_s1, p6_s2;
-    wire p6_error;
-    wire [7:0] p6_a1, p6_a0, p6_b1, p6_b0, p6_h2, p6_h1, p6_h0;
-    BCD_Adder_Algorithm p6_adder(.A(stored_A), .B(stored_B),
-        .S0(p6_s0), .S1(p6_s1), .S2(p6_s2));
-    assign p6_error = (stored_A[7] & (stored_A[6] | stored_A[5]))
-                    | (stored_A[3] & (stored_A[2] | stored_A[1]))
-                    | (stored_B[7] & (stored_B[6] | stored_B[5]))
-                    | (stored_B[3] & (stored_B[2] | stored_B[1]));
-    Seg7_Decoder p6_da1(.m(stored_A[7:4]), .out(p6_a1));
-    Seg7_Decoder p6_da0(.m(stored_A[3:0]), .out(p6_a0));
-    Seg7_Decoder p6_db1(.m(stored_B[7:4]), .out(p6_b1));
-    Seg7_Decoder p6_db0(.m(stored_B[3:0]), .out(p6_b0));
-    Seg7_Decoder p6_ds2(.m(p6_s2), .out(p6_h2));
-    Seg7_Decoder p6_ds1(.m(p6_s1), .out(p6_h1));
-    Seg7_Decoder p6_ds0(.m(p6_s0), .out(p6_h0));
-    assign HEX5 = SW[9] ? 8'hff : p6_a1;
-    assign HEX4 = SW[9] ? 8'hff : p6_a0;
-    assign HEX3 = SW[9] ? 8'hff : p6_b1;
-    assign HEX2 = SW[9] ? p6_h2 : p6_b0;
-    assign HEX1 = SW[9] ? p6_h1 : 8'hff;
-    assign HEX0 = SW[9] ? p6_h0 : 8'hff;
-    assign LEDR = {p6_error, SW[8:0]};
-    // END PART VI
-*/
-
-/*
-    // BEGIN PART VII
-    // PART VII - Convert binary SW[5:0] into decimal 00..63.
-    // HEX1 = tens, HEX0 = units; HEX5..2 are blank.
-    wire [3:0] p7_d0, p7_d1;
-    Binary6_BCD p7_converter(.V(SW[5:0]), .D0(p7_d0), .D1(p7_d1));
-    Seg7_Decoder p7_units(.m(p7_d0), .out(HEX0));
-    Seg7_Decoder p7_tens(.m(p7_d1), .out(HEX1));
-    assign {HEX5, HEX4, HEX3, HEX2} = 32'hffffffff;
-    assign LEDR = SW;
-    // END PART VII
-*/
 endmodule

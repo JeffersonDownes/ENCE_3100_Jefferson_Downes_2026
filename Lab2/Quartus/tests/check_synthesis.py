@@ -6,7 +6,7 @@ BUILD=ROOT/'tests/build/synthesis'
 MAP=Path('C:/altera_lite/25.1std/quartus/bin64/quartus_map.exe')
 source=(ROOT/'main.v').read_text()
 qsf=(ROOT/'main.qsf').read_text()
-parts=sys.argv[1:] or ['I','II','III','IV','V','VI','VII']
+parts=sys.argv[1:] or ['I','II','III','IV','V']
 results=[]
 for part in parts:
     folder=BUILD/f'part_{part}';folder.mkdir(parents=True,exist_ok=True)

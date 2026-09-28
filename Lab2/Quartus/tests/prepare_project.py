@@ -23,7 +23,7 @@ for line in old.splitlines():
             lines.append(line.replace(' -entity DE10_LITE_Golden_Top',''))
     elif line.startswith('set_instance_assignment -name PARTITION_HIERARCHY') and '-entity' not in line:
         lines.append(line)
-files=['main.v','Seg7_Decoder.v','mux_2_1.v','CircuitA.v','CircuitB.v','Binary4_BCD.v','Full_Adder.v','Ripple_Adder_4.v','BCD_Adder_1.v','BCD_Adder_2.v','BCD_Adder_Algorithm.v','Binary6_BCD.v','Switch_Registers.v']
+files=['main.v','Seg7_Decoder.v','mux_2_1.v','CircuitA.v','CircuitB.v','Binary4_BCD.v','Full_Adder.v','Ripple_Adder_4.v','BCD_Adder_1.v','BCD_Adder_2.v','Switch_Registers.v']
 header='# Lab 2 - existing DE10-Lite 10M50DAF484C7G pin assignments.\n# Removed stale files and ports that are not in the main module.\n'
 qsf.write_text(header+'\n'.join(lines)+'\n\n'+'\n'.join('set_global_assignment -name VERILOG_FILE '+f for f in files)+'\nset_global_assignment -name SDC_FILE main.sdc\n')
 assigned={re.search(r'-to (\S+)',s)[1] for s in lines if s.startswith('set_location_assignment')}

@@ -177,7 +177,5 @@ set_global_assignment -name VERILOG_FILE Full_Adder.v
 set_global_assignment -name VERILOG_FILE Ripple_Adder_4.v
 set_global_assignment -name VERILOG_FILE BCD_Adder_1.v
 set_global_assignment -name VERILOG_FILE BCD_Adder_2.v
-set_global_assignment -name VERILOG_FILE BCD_Adder_Algorithm.v
-set_global_assignment -name VERILOG_FILE Binary6_BCD.v
 set_global_assignment -name VERILOG_FILE Switch_Registers.v
 set_global_assignment -name SDC_FILE main.sdc

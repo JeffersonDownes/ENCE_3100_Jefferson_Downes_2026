@@ -61,16 +61,6 @@ def mux(c,x,y,n0,n1,sel,out,w=4):
     endpoint(c,(x-30,y-10),n0,w);endpoint(c,(x-30,y+10),n1,w)
     wire(c,(x-20,y+20),(x-20,y+50));tunnel(c,x-20,y+50,sel,1,'north')
     endpoint(c,(x,y),out,w,'out')
-def arithmetic(c,kind,x,y,n0,n1,out,w=5,carry='ZERO',cout=None):
-    comp(c,kind,x,y,3,width=w)
-    endpoint(c,(x-40,y-10),n0,w);endpoint(c,(x-40,y+10),n1,w)
-    wire(c,(x-20,y-20),(x-20,y-50));tunnel(c,x-20,y-50,carry,1,'south')
-    endpoint(c,(x,y),out,w,'out')
-    if cout:wire(c,(x-20,y+20),(x-20,y+50));tunnel(c,x-20,y+50,cout,1,'north')
-def compare(c,x,y,n0,n1,gt,w=5):
-    comp(c,'Comparator',x,y,3,width=w,mode='unsigned')
-    endpoint(c,(x-40,y-10),n0,w);endpoint(c,(x-40,y+10),n1,w)
-    endpoint(c,(x,y-10),gt,1,'out')
 def zero(c,x=160,y=650):const(c,x,y,0);endpoint(c,(x,y),'ZERO',side='out')
 def display(c,x,y,net,label):
     # One native 7-segment display, with short tunnels for every segment.
@@ -185,55 +175,6 @@ sub(c,'BCD_Adder_1',950,390,[('A1',4),('B1',4),('carry1',1)],[('S1',4),('carry2'
 split(c,750,690,'S2',4,['carry2','ZERO','ZERO','ZERO'])
 gate(c,'OR Gate',1040,660,['e0','e1'],'ERROR')
 
-c=circuit('Algorithm_Digit','ALGORITHMIC DECIMAL DIGIT  |  Part VI stage','T = A + B + cin; carry = T > 9; Z = carry ? 10 : 0; S = T - Z.')
-for i,(n,w) in enumerate([('A',4),('B',4),('cin',1)]):pin(c,150,130+40*i,n,w,net=n)
-pin(c,1220,130,'S',4,True,'S');pin(c,1220,170,'carry',1,True,'carry')
-zero(c,150,720)
-group(c,300,360,'A5',5,[('A',4),('ZERO',1)])
-group(c,300,510,'B5',5,[('B',4),('ZERO',1)])
-arithmetic(c,'Adder',550,290,'A5','B5','T',5,'cin')
-const(c,490,520,9,5);endpoint(c,(490,520),'NINE',5,'out')
-compare(c,760,400,'T','NINE','carry',5)
-const(c,660,640,0,5);endpoint(c,(660,640),'ZERO5',5,'out')
-const(c,660,690,10,5);endpoint(c,(660,690),'TEN',5,'out')
-mux(c,910,600,'ZERO5','TEN','carry','Z',5)
-arithmetic(c,'Subtractor',1060,290,'T','Z','S5',5)
-group(c,1030,820,'S5',5,[('S',4),('unused',1)])
-text(c,80,890,'Five-bit arithmetic preserves the carry at 16..19. All comparators use unsigned mode.',13)
-
-c=circuit('Algorithm_BCD_2','ALGORITHMIC TWO-DIGIT BCD ADDER','Part VI visual counterpart: two comparator / mux / subtractor stages, with decimal carry between them.')
-for i,n in enumerate(['A1','A0','B1','B0']):pin(c,160,130+40*i,n,4,net=n)
-for i,n in enumerate(['S0','S1','S2']):pin(c,1110,130+40*i,n,4,True,n)
-zero(c,170,630)
-sub(c,'Algorithm_Digit',470,390,[('A0',4),('B0',4),('ZERO',1)],[('S0',4),('carry1',1)],'Units: T0 / Z0')
-sub(c,'Algorithm_Digit',950,390,[('A1',4),('B1',4),('carry1',1)],[('S1',4),('carry2',1)],'Tens: T1 / Z1')
-split(c,760,680,'S2',4,['carry2','ZERO','ZERO','ZERO'])
-
-c=circuit('Subtract_10_Stage','CONDITIONAL SUBTRACT-10 STAGE','If V >= 10: R = V - 10 and hit = 1; otherwise R = V and hit = 0. Six-bit unsigned arithmetic.')
-pin(c,140,130,'V',6,net='V');pin(c,1050,130,'R',6,True,'R');pin(c,1050,170,'hit',1,True,'hit')
-zero(c,150,600)
-const(c,270,260,9,6);endpoint(c,(270,260),'NINE',6,'out')
-const(c,270,490,10,6);endpoint(c,(270,490),'TEN',6,'out')
-compare(c,530,280,'V','NINE','hit',6)
-arithmetic(c,'Subtractor',530,440,'V','TEN','MINUS10',6)
-mux(c,840,390,'V','MINUS10','hit','R',6)
-
-c=circuit('Binary6_BCD','SIX-BIT BINARY TO BCD  |  Part VII core','Six conditional subtract-10 stages produce a remainder below 10. The number of successful stages is the tens digit.')
-pin(c,160,130,'V',6,net='V');pin(c,1280,130,'D0',4,True,'D0');pin(c,1280,170,'D1',4,True,'D1')
-zero(c,160,830)
-for i in range(6):
-    xx=420+(i%3)*430;yy=300+(i//3)*220
-    sub(c,'Subtract_10_Stage',xx,yy,[('V' if i==0 else f'R{i}',6)],[(f'R{i+1}',6),(f'h{i+1}',1)],f'Stage {i+1}')
-group(c,340,810,'R6',6,[('D0',4),('discard',2)])
-for i in range(6):
-    xx=200+(i%3)*420;yy=1030+(i//3)*210
-    split(c,xx,yy,f'H{i+1}',4,[f'h{i+1}','ZERO','ZERO','ZERO'])
-const(c,180,1320,0,4);endpoint(c,(180,1320),'COUNT0',4,'out')
-for i in range(6):
-    xx=360+(i%3)*420; yy=1430+(i//3)*180
-    arithmetic(c,'Adder',xx,yy,f'COUNT{i}',f'H{i+1}','D1' if i==5 else f'COUNT{i+1}',4)
-text(c,80,1730,'Input range: 000000 (00) through 111111 (63). All six hit bits are counted; no ROM or lookup table.',13)
-
 # User-facing lab circuits.
 c=circuit('Part_I','PART I  |  Four independent decimal displays','Each group of four switches drives its matching display. Digits 0..9 are defined; inputs 10..15 are don\'t-cares.')
 for i,hi in enumerate([15,11,7,3]):pin(c,180+330*i,150,f'SW{hi}_{hi-3}',4,net=f'D{3-i}')
@@ -262,7 +203,7 @@ endpoint(c,(1210,950),'ERROR')
 text(c,1150,990,'Invalid BCD input',13)
 text(c,1040,1030,'Valid digits: 0..9',13);text(c,1040,1060,'Maximum sum: 9 + 9 + 1 = 19',13)
 
-for name,core,desc in [('Part_V','BCD_Adder_2','Two cascaded Part IV BCD adders.'),('Part_VI','Algorithm_BCD_2','Two arithmetic / comparator / mux stages matching the PDF pseudo-code.')]:
+for name,core,desc in [('Part_V','BCD_Adder_2','Two cascaded Part IV BCD adders.')]:
     c=circuit(name,f'PART {name.split("_")[1]}  |  Two-digit BCD addition',desc+'  Inputs are packed BCD: 0x99 means decimal 99.')
     pin(c,180,140,'SW15_8',8,net='A');pin(c,180,180,'SW7_0',8,net='B')
     group(c,340,300,'A',8,[('A0',4),('A1',4)])
@@ -275,16 +216,10 @@ for name,core,desc in [('Part_V','BCD_Adder_2','Two cascaded Part IV BCD adders.
     text(c,80,880,'SUM  |  Hundreds, tens, units',20)
     text(c,80,1370,'Example: SW15_8 = 1001 1001 and SW7_0 = 1001 1001 displays 99 + 99 = 198.',13)
 
-c=circuit('Part_VII','PART VII  |  Six-bit binary to two decimal digits','Poke SW5..0 to try every value from 0 to 63. HEX1 is tens and HEX0 is units.')
-pin(c,180,140,'SW5_0',6,net='V')
-sub(c,'Binary6_BCD',630,200,[('V',6)],[('D0',4),('D1',4)])
-pin(c,1020,140,'D0',4,True,'D0');pin(c,1020,180,'D1',4,True,'D1')
-display_row(c,380,400,[('D1','HEX1'),('D0','HEX0')])
-
 # Present lab parts first, then reusable implementation circuits.
 circuits=project.findall('circuit')
 for cc in circuits:project.remove(cc)
-order=['Part_I','Part_II','Part_III','Part_IV','Part_V','Part_VI','Part_VII','Full_Adder','Ripple_Adder_4','BCD_Adder_1','BCD_Adder_2','Algorithm_Digit','Algorithm_BCD_2','Binary6_BCD','Subtract_10_Stage','BCD_Display','Seg7_Decoder','myComparator','CircuitA','CircuitB']
+order=['Part_I', 'Part_II', 'Part_III', 'Part_IV', 'Part_V', 'Full_Adder', 'Ripple_Adder_4', 'BCD_Adder_1', 'BCD_Adder_2', 'BCD_Display', 'Seg7_Decoder', 'myComparator', 'CircuitA', 'CircuitB']
 for name in order:project.append(next(cc for cc in circuits if cc.get('name')==name))
 E.indent(tree,space='  ')
 tree.write(ROOT/'Lab_2_Solutions.circ',encoding='UTF-8',xml_declaration=True)
@@ -296,14 +231,9 @@ vectors('full_adder',['a','b','cin','s','cout'],((a,b,k,(a+b+k)%2,(a+b+k)//2) fo
 vectors('ripple',['A','B','cin','S','cout'],((a,b,k,(a+b+k)%16,(a+b+k)//16) for a in range(16) for b in range(16) for k in range(2)))
 vectors('bcd1',['A','B','cin','S0','S1','RAW','C4','ERROR'],((a,b,k,(a+b+k)%10 if max(a,b)<10 else '*',(a+b+k)//10 if max(a,b)<10 else '*',(a+b+k)%16,(a+b+k)//16,int(max(a,b)>9)) for a in range(16) for b in range(16) for k in range(2)))
 vectors('bcd2',['A1','A0','B1','B0','S0','S1','S2','ERROR'],((a//10,a%10,b//10,b%10,(a+b)%10,((a+b)//10)%10,(a+b)//100,0) for a in range(100) for b in range(100)))
-vectors('algorithm_digit',['A','B','cin','S','carry'],((a,b,k,(a+b+k)%10,(a+b+k)//10) for a in range(10) for b in range(10) for k in range(2)))
-vectors('algorithm2',['A1','A0','B1','B0','S0','S1','S2'],((a//10,a%10,b//10,b%10,(a+b)%10,((a+b)//10)%10,(a+b)//100) for a in range(100) for b in range(100)))
-vectors('binary6',['V','D0','D1'],((v,v%10,v//10) for v in range(64)))
-vectors('subtract10',['V','R','hit'],((v,v-10 if v>9 else v,int(v>9)) for v in range(64)))
 vectors('display',['BCD','SEG'],enumerate(SEG))
 vectors('part1',['SW15_12','SW11_8','SW7_4','SW3_0','T:HEX3_SEG','T:HEX2_SEG','T:HEX1_SEG','T:HEX0_SEG'],((a,b,c,d,SEG[a],SEG[b],SEG[c],SEG[d]) for a in range(10) for b in range(10) for c in range(10) for d in range(10)))
 vectors('part3',['SW7_4','SW3_0','SW8','S','cout','T:LEDR','T:LEDG'],((a,b,k,(a+b+k)%16,(a+b+k)//16,(k<<8)|(a<<4)|b,a+b+k) for a in range(16) for b in range(16) for k in range(2)))
 vectors('part4',['SW7_4','SW3_0','SW8','S0','S1','ERROR','T:LEDR','T:LEDG','T:HEX6_SEG','T:HEX4_SEG','T:HEX1_SEG','T:HEX0_SEG'],((a,b,k,(a+b+k)%10 if max(a,b)<10 else '*',(a+b+k)//10 if max(a,b)<10 else '*',int(max(a,b)>9),(k<<8)|(a<<4)|b,a+b+k,SEG[a] if a<10 else '*',SEG[b] if b<10 else '*',SEG[(a+b+k)//10] if max(a,b)<10 else '*',SEG[(a+b+k)%10] if max(a,b)<10 else '*') for a in range(16) for b in range(16) for k in range(2)))
-vectors('part56',['SW15_8','SW7_0','S0','S1','S2','T:HEX7_SEG','T:HEX6_SEG','T:HEX5_SEG','T:HEX4_SEG','T:HEX2_SEG','T:HEX1_SEG','T:HEX0_SEG'],(((a//10)*16+a%10,(b//10)*16+b%10,(a+b)%10,((a+b)//10)%10,(a+b)//100,SEG[a//10],SEG[a%10],SEG[b//10],SEG[b%10],SEG[(a+b)//100],SEG[((a+b)//10)%10],SEG[(a+b)%10]) for a in range(100) for b in range(100)))
-vectors('part7',['SW5_0','D0','D1','T:HEX1_SEG','T:HEX0_SEG'],((v,v%10,v//10,SEG[v//10],SEG[v%10]) for v in range(64)))
+vectors('part5',['SW15_8','SW7_0','S0','S1','S2','T:HEX7_SEG','T:HEX6_SEG','T:HEX5_SEG','T:HEX4_SEG','T:HEX2_SEG','T:HEX1_SEG','T:HEX0_SEG'],(((a//10)*16+a%10,(b//10)*16+b%10,(a+b)%10,((a+b)//10)%10,(a+b)//100,SEG[a//10],SEG[a%10],SEG[b//10],SEG[b%10],SEG[(a+b)//100],SEG[((a+b)//10)%10],SEG[(a+b)%10]) for a in range(100) for b in range(100)))
 print(f'Wrote {len(order)} circuits and exhaustive test vectors.')

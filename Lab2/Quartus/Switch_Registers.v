@@ -1,4 +1,4 @@
-// DE10-Lite adaptation for Parts I, V, and VI.
+// DE10-Lite adaptation for Parts I and V.
 // Set SW[7:0], then press active-low KEY0 to load A or KEY1 to load B.
 // Hold switches steady while pressing. Bounce may repeat the same load;
 // it cannot increment or otherwise change a stable switch value.

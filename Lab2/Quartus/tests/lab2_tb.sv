@@ -3,10 +3,10 @@
 module lab2_tb;
     reg clk = 0;
     always #10 clk = ~clk;
-    reg [9:0] sw [0:7];
-    reg [1:0] key_n [0:7];
-    wire [9:0] led [0:7];
-    wire [7:0] h0 [0:7], h1 [0:7], h2 [0:7], h3 [0:7], h4 [0:7], h5 [0:7];
+    reg [9:0] sw [0:5];
+    reg [1:0] key_n [0:5];
+    wire [9:0] led [0:5];
+    wire [7:0] h0 [0:5], h1 [0:5], h2 [0:5], h3 [0:5], h4 [0:5], h5 [0:5];
     integer checks = 0;
     integer a,b,k,v,i,total,view;
     reg [7:0] packed_a,packed_b;
@@ -19,8 +19,6 @@ module lab2_tb;
     `DUT(3,main_part_III)
     `DUT(4,main_part_IV)
     `DUT(5,main_part_V)
-    `DUT(6,main_part_VI)
-    `DUT(7,main_part_VII)
     `undef DUT
 
     function automatic [7:0] seg(input integer digit);
@@ -57,20 +55,8 @@ module lab2_tb;
             repeat(5) @(negedge clk);
         end
     endtask
-    // Load the Part V and VI DUTs together using the physical KEY interface.
-    task automatic load_pair(input integer which,input [7:0] data);
-        begin
-            @(negedge clk);sw[5][7:0]=data;sw[6][7:0]=data;
-            key_n[5]=3;key_n[6]=3;
-            repeat(5) @(negedge clk);
-            key_n[5][which]=0;key_n[6][which]=0;
-            repeat(5) @(negedge clk);
-            key_n[5]=3;key_n[6]=3;
-            repeat(5) @(negedge clk);
-        end
-    endtask
     initial begin
-        for(i=0;i<8;i=i+1) begin sw[i]=0;key_n[i]=3;end
+        for(i=0;i<6;i=i+1) begin sw[i]=0;key_n[i]=3;end
         repeat(8) @(negedge clk);
         // Registers initialize to 00; a held button must not continuously load.
         expect_hex(1,{16'hffff,seg(0),seg(0),seg(0),seg(0)});
@@ -121,15 +107,15 @@ module lab2_tb;
         $display("PASS PART IV: all 512 input combinations in both LED views, including errors");
 
         for(a=0;a<100;a=a+1)begin
-            load_pair(0,bcd(a));
+            load(5,0,bcd(a));
             for(b=0;b<100;b=b+1)begin
-                load_pair(1,bcd(b));total=a+b;
+                load(5,1,bcd(b));total=a+b;
                 for(view=0;view<2;view=view+1)begin
-                    sw[5][9]=view;sw[6][9]=view;#1;
+                    sw[5][9]=view;#1;
                     expected_hex=view ? {24'hffffff,seg(total/100),seg((total/10)%10),seg(total%10)}
                                       : {seg(a/10),seg(a%10),seg(b/10),seg(b%10),16'hffff};
-                    expect_hex(5,expected_hex);expect_hex(6,expected_hex);
-                    expect_led(5,{1'b0,sw[5][8:0]});expect_led(6,{1'b0,sw[6][8:0]});
+                    expect_hex(5,expected_hex);
+                    expect_led(5,{1'b0,sw[5][8:0]});
                 end
             end
         end
@@ -140,17 +126,10 @@ module lab2_tb;
                 0:packed_a[3:0]=v;1:packed_a[7:4]=v;
                 2:packed_b[3:0]=v;3:packed_b[7:4]=v;
             endcase
-            load_pair(0,packed_a);load_pair(1,packed_b);
-            expect_led(5,{1'b1,sw[5][8:0]});expect_led(6,{1'b1,sw[6][8:0]});
+            load(5,0,packed_a);load(5,1,packed_b);
+            expect_led(5,{1'b1,sw[5][8:0]});
         end
         $display("PASS PART V: all 10000 valid operand pairs in both display views; invalid-digit flags");
-        $display("PASS PART VI: all 10000 valid operand pairs in both display views; invalid-digit flags");
-
-        for(v=0;v<1024;v=v+1)begin
-            sw[7]=v;#1;
-            expect_hex(7,{32'hffffffff,seg((v%64)/10),seg((v%64)%10)});expect_led(7,v);
-        end
-        $display("PASS PART VII: all 1024 switch states (all 64 values)");
         $display("ALL PASS: %0d output assertions",checks);
         $finish;
     end

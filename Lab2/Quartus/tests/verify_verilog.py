@@ -6,7 +6,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 BUILD=ROOT/'tests/build'
 TOOLS=Path('C:/altera_lite/25.1std/questa_fse/win64')
-PARTS=['I','II','III','IV','V','VI','VII']
+PARTS=['I','II','III','IV','V']
 BUILD.mkdir(parents=True,exist_ok=True)
 source=(ROOT/'main.v').read_text(encoding='utf-8-sig')
 sources=[ROOT/p for p in re.findall(r'^set_global_assignment -name VERILOG_FILE (.+)$',(ROOT/'main.qsf').read_text(),re.M) if p!='main.v']

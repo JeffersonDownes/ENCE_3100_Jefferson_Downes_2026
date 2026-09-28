@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 JDK=Path.home()/'.jdks/openjdk-27/bin'
 JAR=Path('C:/Program Files/logisim-evolution/app/logisim-evolution-4.1.0-all.jar')
 CP=str(ROOT/'tools')+';'+str(JAR)
-CASES=[('Seg7_Decoder','decoder'),('Part_II','part2'),('Full_Adder','full_adder'),('Ripple_Adder_4','ripple'),('BCD_Adder_1','bcd1'),('BCD_Adder_2','bcd2'),('Algorithm_Digit','algorithm_digit'),('Algorithm_BCD_2','algorithm2'),('Subtract_10_Stage','subtract10'),('Binary6_BCD','binary6'),('BCD_Display','display'),('Part_I','part1'),('Part_III','part3'),('Part_IV','part4'),('Part_V','part56'),('Part_VI','part56'),('Part_VII','part7')]
+CASES=[('Seg7_Decoder', 'decoder'), ('Part_II', 'part2'), ('Full_Adder', 'full_adder'), ('Ripple_Adder_4', 'ripple'), ('BCD_Adder_1', 'bcd1'), ('BCD_Adder_2', 'bcd2'), ('BCD_Display', 'display'), ('Part_I', 'part1'), ('Part_III', 'part3'), ('Part_IV', 'part4'), ('Part_V', 'part5')]
 subprocess.run([str(JDK/'javac.exe'),'-cp',str(JAR),str(ROOT/'tools/CircuitCheck.java')],check=True)
 def run(case):
     c,v=case
