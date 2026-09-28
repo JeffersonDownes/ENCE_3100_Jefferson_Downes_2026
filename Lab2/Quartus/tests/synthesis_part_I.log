@@ -1,0 +1,84 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Mon Sep 28 13:37:20 2026
+Info: Command: quartus_map main
+Info (20032): Parallel compilation is enabled and will use up to 2 processors
+Info (12021): Found 1 design units, including 1 entities, in source file main.v
+    Info (12023): Found entity 1: main File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/seg7_decoder.v
+    Info (12023): Found entity 1: Seg7_Decoder File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Seg7_Decoder.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/mux_2_1.v
+    Info (12023): Found entity 1: mux_2_1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/mux_2_1.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/circuita.v
+    Info (12023): Found entity 1: CircuitA File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/CircuitA.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/circuitb.v
+    Info (12023): Found entity 1: CircuitB File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/CircuitB.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/binary4_bcd.v
+    Info (12023): Found entity 1: Binary4_BCD File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Binary4_BCD.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/full_adder.v
+    Info (12023): Found entity 1: Full_Adder File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Full_Adder.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/ripple_adder_4.v
+    Info (12023): Found entity 1: Ripple_Adder_4 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Ripple_Adder_4.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/bcd_adder_1.v
+    Info (12023): Found entity 1: BCD_Adder_1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_1.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/bcd_adder_2.v
+    Info (12023): Found entity 1: BCD_Adder_2 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_2.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/bcd_adder_algorithm.v
+    Info (12023): Found entity 1: BCD_Adder_Algorithm File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_Algorithm.v Line: 3
+Info (12021): Found 2 design units, including 2 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/binary6_bcd.v
+    Info (12023): Found entity 1: Subtract_10_Stage File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Binary6_BCD.v Line: 2
+    Info (12023): Found entity 2: Binary6_BCD File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Binary6_BCD.v Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/lab2/quartus/switch_registers.v
+    Info (12023): Found entity 1: Switch_Registers File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Switch_Registers.v Line: 5
+Info (12127): Elaborating entity "main" for the top level hierarchy
+Info (12128): Elaborating entity "Switch_Registers" for hierarchy "Switch_Registers:operand_registers" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 25
+Info (12128): Elaborating entity "Seg7_Decoder" for hierarchy "Seg7_Decoder:p1_d3" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 34
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 19
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/tests/build/synthesis/part_I/main.v Line: 20
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 123 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 58 output pins
+    Info (21061): Implemented 52 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 4764 megabytes
+    Info: Processing ended: Mon Sep 28 13:37:45 2026
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:02
+TBBmalloc: skip allocation functions replacement in ucrtbase.dll: unknown prologue for function _msize

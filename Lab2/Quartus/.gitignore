@@ -1,0 +1,3 @@
+# Quartus creates these while a project is open and locks them against reading.
+# They are temporary process files, not project sources.
+*.flock

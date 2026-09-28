@@ -1,0 +1,31 @@
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 13:34:53 on Sep 28,2026
+vlog -sv -work work C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\Seg7_Decoder.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\mux_2_1.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\CircuitA.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\CircuitB.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\Binary4_BCD.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\Full_Adder.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\Ripple_Adder_4.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\BCD_Adder_1.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\BCD_Adder_2.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\BCD_Adder_Algorithm.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\Binary6_BCD.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\Switch_Registers.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_idle.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_I.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_II.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_III.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_IV.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_V.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_VI.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\build\main_VII.v C:\Users\jddow\OneDrive\Documents\Github\ENCE_3100_Jefferson_Downes_2026\Lab2\Quartus\tests\lab2_tb.sv 
+** Note: (vlog-220) 'C:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module Seg7_Decoder
+-- Compiling module mux_2_1
+-- Compiling module CircuitA
+-- Compiling module CircuitB
+-- Compiling module Binary4_BCD
+-- Compiling module Full_Adder
+-- Compiling module Ripple_Adder_4
+-- Compiling module BCD_Adder_1
+-- Compiling module BCD_Adder_2
+-- Compiling module BCD_Adder_Algorithm
+-- Compiling module Subtract_10_Stage
+-- Compiling module Binary6_BCD
+-- Compiling module Switch_Registers
+-- Compiling module main_idle
+-- Compiling module main_part_I
+-- Compiling module main_part_II
+-- Compiling module main_part_III
+-- Compiling module main_part_IV
+-- Compiling module main_part_V
+-- Compiling module main_part_VI
+-- Compiling module main_part_VII
+-- Compiling module lab2_tb
+
+Top level modules:
+	lab2_tb
+End time: 13:34:54 on Sep 28,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
