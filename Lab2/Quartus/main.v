@@ -1,16 +1,3 @@
-// ENCE 3100 - Lab 2 - Numbers and Displays
-// Target: existing DE10-Lite / MAX 10 project (10 switches, 6 displays).
-//
-// All five parts are kept here as separately labeled comment blocks.
-// To run a part:
-//   1. Comment out the two assignments in IDLE below.
-//   2. Remove the /* and */ surrounding ONLY the desired PART block.
-//   3. Compile. Never enable two parts: they drive the same output pins.
-// Supporting modules remain active in their own .v files.
-//
-// KEY0 loads SW[7:0] into stored_A; KEY1 loads SW[7:0] into stored_B.
-// Hold switches steady during each press. Both registers start at zero.
-// HEXx[6:0] = g,f,e,d,c,b,a (active-low); HEXx[7] = decimal point (off).
 module main(
     input  [9:0] SW,
     input  [1:0] KEY,
@@ -24,18 +11,10 @@ module main(
         .A(stored_A), .B(stored_B)
     );
 
-    // BEGIN IDLE - comment these assignments when enabling a part.
-    assign LEDR = SW;
-    assign {HEX5, HEX4, HEX3, HEX2, HEX1, HEX0} = 48'hffffffffffff;
-    // END IDLE
+    
 
-/*
     // BEGIN PART I
     // PART I - Four independent decimal digits.
-    // KEY0 captures the upper two digits; KEY1 captures the lower two.
-    // HEX3 HEX2 = stored_A; HEX1 HEX0 = stored_B. HEX5/4 are blank.
-    // Load 0001_0010 then 0011_0111 to display 1237.
-    // Each nibble must be 0..9; 10..15 are don't-cares.
     Seg7_Decoder p1_d3(.m(stored_A[7:4]), .out(HEX3));
     Seg7_Decoder p1_d2(.m(stored_A[3:0]), .out(HEX2));
     Seg7_Decoder p1_d1(.m(stored_B[7:4]), .out(HEX1));
@@ -43,12 +22,10 @@ module main(
     assign {HEX5, HEX4} = 16'hffff;
     assign LEDR = SW;
     // END PART I
-*/
+
 
 /*
     // BEGIN PART II
-    // PART II - Convert SW[3:0] (0..15) into HEX1 HEX0 (00..15).
-    // Boolean comparator, four muxes, CircuitA, CircuitB, and decoder.
     wire [3:0] p2_m;
     wire p2_z;
     Binary4_BCD p2_converter(.V(SW[3:0]), .M(p2_m), .z(p2_z));
@@ -127,5 +104,4 @@ module main(
     assign LEDR = {p5_error, SW[8:0]};
     // END PART V
 */
-
 endmodule

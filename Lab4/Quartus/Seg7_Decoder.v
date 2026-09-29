@@ -1,3 +1,5 @@
+// Part I: active-low decimal decoder. Inputs 10-15 are don't-cares.
+// out[6:0] = g,f,e,d,c,b,a; out[7] is the decimal point (off).
 module Seg7_Decoder(
     input  [3:0] m,
     output [7:0] out
