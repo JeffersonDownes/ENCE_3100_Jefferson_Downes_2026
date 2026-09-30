@@ -62,10 +62,7 @@
     <a name="simulationFrequency" val="8.0"/>
     <comp lib="0" loc="(330,370)" name="Clock">
       <a name="appearance" val="NewPins"/>
-      <a name="highDuration" val="5"/>
       <a name="label" val="clk"/>
-      <a name="lowDuration" val="5"/>
-      <a name="phaseOffset" val="1"/>
     </comp>
     <comp lib="0" loc="(330,420)" name="Pin">
       <a name="appearance" val="NewPins"/>
@@ -96,10 +93,10 @@
     <comp lib="5" loc="(750,290)" name="T Flip-Flop">
       <a name="appearance" val="logisim_evolution"/>
     </comp>
-    <comp lib="9" loc="(408,272)" name="Text">
+    <comp lib="9" loc="(405,270)" name="Text">
       <a name="text" val="LSB"/>
     </comp>
-    <comp lib="9" loc="(768,280)" name="Text">
+    <comp lib="9" loc="(765,280)" name="Text">
       <a name="text" val="MSB"/>
     </comp>
     <wire from="(330,370)" to="(370,370)"/>

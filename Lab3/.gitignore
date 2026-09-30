@@ -1,0 +1,14 @@
+# Quartus-generated databases, build outputs, and lock files
+/Quartus/db/
+/Quartus/incremental_db/
+/Quartus/output_files/
+/Quartus/**/*.rdr.flock
+/Quartus/*.qws
+/Quartus/*.bak
+/Quartus/*.log
+
+# Logisim recovery files
+/Logisim/.*.autosave
+
+# Temporary document previews
+/tmp/
