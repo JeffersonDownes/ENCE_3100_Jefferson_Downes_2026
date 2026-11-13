@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="4.1.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v4.1.0(https://github.com/logisim-evolution/).
+
+  <lib desc="#Wiring" name="0">
+    <tool name="Pin">
+      <a name="appearance" val="classic"/>
+    </tool>
+  </lib>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#Base" name="5"/>
+  <main name="accumulator_8bit"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings/>
+  <toolbar/>
+  <circuit name="accumulator_8bit">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="accumulator_8bit"/>
+    <a name="simulationFrequency" val="8.0"/>
+    <comp lib="0" loc="(160,230)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="A"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(160,530)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="Clock"/>
+    </comp>
+    <comp lib="0" loc="(160,590)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="Reset_n"/>
+    </comp>
+    <comp lib="0" loc="(210,270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Clock"/>
+    </comp>
+    <comp lib="0" loc="(220,250)" name="Constant"/>
+    <comp lib="0" loc="(260,530)" name="Tunnel">
+      <a name="label" val="Clock"/>
+    </comp>
+    <comp lib="0" loc="(280,320)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="Clear"/>
+    </comp>
+    <comp lib="0" loc="(310,590)" name="Tunnel">
+      <a name="label" val="Clear"/>
+    </comp>
+    <comp lib="0" loc="(370,120)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="A_stored"/>
+      <a name="labelloc" val="east"/>
+      <a name="radix" val="16"/>
+      <a name="type" val="output"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(490,200)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(600,440)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Clock"/>
+    </comp>
+    <comp lib="0" loc="(610,280)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Clock"/>
+    </comp>
+    <comp lib="0" loc="(620,260)" name="Constant"/>
+    <comp lib="0" loc="(670,360)" name="Constant">
+      <a name="facing" val="south"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(670,480)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="Clear"/>
+    </comp>
+    <comp lib="0" loc="(680,330)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="Clear"/>
+    </comp>
+    <comp lib="0" loc="(850,240)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="S"/>
+      <a name="labelloc" val="east"/>
+      <a name="radix" val="16"/>
+      <a name="type" val="output"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(850,400)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="Overflow"/>
+      <a name="labelloc" val="east"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="1" loc="(260,590)" name="NOT Gate"/>
+    <comp lib="3" loc="(510,240)" name="Adder"/>
+    <comp lib="4" loc="(250,200)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="label" val="A_register"/>
+    </comp>
+    <comp lib="4" loc="(650,210)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="label" val="Sum_register"/>
+    </comp>
+    <comp lib="4" loc="(650,390)" name="D Flip-Flop">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="label" val="Carry_register"/>
+    </comp>
+    <comp lib="5" loc="(100,650)" name="Text">
+      <a name="font" val="SansSerif plain 16"/>
+      <a name="halign" val="left"/>
+      <a name="text" val="Each rising edge: A_stored &lt;- A;  {Overflow, S} &lt;- old A_stored + old S."/>
+    </comp>
+    <comp lib="5" loc="(100,680)" name="Text">
+      <a name="font" val="SansSerif plain 16"/>
+      <a name="halign" val="left"/>
+      <a name="text" val="Overflow is the registered unsigned carry-out (not signed overflow)."/>
+    </comp>
+    <comp lib="5" loc="(390,525)" name="Text">
+      <a name="font" val="SansSerif plain 16"/>
+      <a name="halign" val="left"/>
+      <a name="text" val="Manual clock: click 0 -&gt; 1 to advance; 1 -&gt; 0 holds."/>
+    </comp>
+    <comp lib="5" loc="(390,555)" name="Text">
+      <a name="font" val="SansSerif plain 16"/>
+      <a name="halign" val="left"/>
+      <a name="text" val="Reset_n = 0 clears all stored values immediately."/>
+    </comp>
+    <comp lib="5" loc="(390,585)" name="Text">
+      <a name="font" val="SansSerif plain 16"/>
+      <a name="halign" val="left"/>
+      <a name="text" val="Reset_n = 1 allows normal operation."/>
+    </comp>
+    <comp lib="5" loc="(530,135)" name="Text">
+      <a name="font" val="SansSerif plain 16"/>
+      <a name="halign" val="left"/>
+      <a name="text" val="8-bit feedback"/>
+    </comp>
+    <wire from="(160,230)" to="(250,230)"/>
+    <wire from="(160,530)" to="(260,530)"/>
+    <wire from="(160,590)" to="(230,590)"/>
+    <wire from="(210,270)" to="(250,270)"/>
+    <wire from="(220,250)" to="(250,250)"/>
+    <wire from="(260,590)" to="(310,590)"/>
+    <wire from="(280,290)" to="(280,320)"/>
+    <wire from="(310,230)" to="(370,230)"/>
+    <wire from="(370,120)" to="(370,230)"/>
+    <wire from="(370,230)" to="(470,230)"/>
+    <wire from="(430,150)" to="(430,250)"/>
+    <wire from="(430,150)" to="(760,150)"/>
+    <wire from="(430,250)" to="(470,250)"/>
+    <wire from="(490,200)" to="(490,220)"/>
+    <wire from="(490,260)" to="(530,260)"/>
+    <wire from="(510,240)" to="(650,240)"/>
+    <wire from="(530,260)" to="(530,400)"/>
+    <wire from="(530,400)" to="(640,400)"/>
+    <wire from="(600,440)" to="(640,440)"/>
+    <wire from="(610,280)" to="(650,280)"/>
+    <wire from="(620,260)" to="(650,260)"/>
+    <wire from="(670,360)" to="(670,390)"/>
+    <wire from="(670,450)" to="(670,480)"/>
+    <wire from="(680,300)" to="(680,330)"/>
+    <wire from="(700,400)" to="(850,400)"/>
+    <wire from="(710,240)" to="(760,240)"/>
+    <wire from="(760,150)" to="(760,240)"/>
+    <wire from="(760,240)" to="(850,240)"/>
+  </circuit>
+</project>

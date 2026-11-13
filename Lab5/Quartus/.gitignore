@@ -1,0 +1,10 @@
+# Quartus creates these while a project is open and locks them against reading.
+# They are temporary process files, not project sources.
+*.flock
+
+# Generated Quartus databases, build products, and editor backups.
+/db/
+/incremental_db/
+/output_files/
+/.qsys_edit/
+*.bak

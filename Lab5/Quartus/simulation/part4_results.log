@@ -1,0 +1,67 @@
+# do main.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 12:52:21 on Nov 13,2026
+# vlog -work work main.vo 
+# ** Note: (vlog-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module registered_multiplier_8bit
+# 
+# Top level modules:
+# 	registered_multiplier_8bit
+# End time: 12:52:21 on Nov 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 12:52:21 on Nov 13,2026
+# vlog -work work part4.vwf.vt 
+# ** Note: (vlog-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# -- Compiling module registered_multiplier_8bit_vlg_vec_tst
+# 
+# Top level modules:
+# 	registered_multiplier_8bit_vlg_vec_tst
+# End time: 12:52:21 on Nov 13,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# ** Note: (vsim-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -voptargs="+acc" -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.registered_multiplier_8bit_vlg_vec_tst 
+# Start time: 12:52:21 on Nov 13,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.registered_multiplier_8bit_vlg_vec_tst(fast)
+# Loading work.registered_multiplier_8bit(fast)
+# Loading fiftyfivenm_ver.fiftyfivenm_io_obuf(fast)
+# Loading fiftyfivenm_ver.fiftyfivenm_io_ibuf(fast)
+# Loading altera_ver.dffeas(fast)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__1)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__2)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__3)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__4)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__5)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__6)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__7)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__8)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__9)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__10)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__11)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__12)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__13)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__14)
+# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__15)
+# after#28
+# ** Note: $finish    : part4.vwf.vt(49)
+#    Time: 120 ns  Iteration: 0  Instance: /registered_multiplier_8bit_vlg_vec_tst
+# End time: 12:52:22 on Nov 13,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
