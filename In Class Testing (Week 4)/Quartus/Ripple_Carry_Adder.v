@@ -1,0 +1,29 @@
+module Ripple_Carry_Adder(
+    input [7:0] A,
+    input [7:0] B,
+    input Cin,
+    output [7:0] Sum,
+    output Cout
+);
+
+	wire [8:0];
+	
+	assign C[0] = Cin;
+   assign Cout = C[8];
+
+   genvar i;
+
+	//Makes N copies of hardware (8 in this case)
+   generate
+		for (i = 0; i < 8; i = i + 1) begin: ripple
+			Full_Adder FA (
+                .a(A[i]),
+                .b(B[i]),
+                .Cin(C[i]),
+                .Sum(Sum[i]),
+                .Cout(C[i+1])
+         );
+		end
+	endgenerate
+
+endmodule

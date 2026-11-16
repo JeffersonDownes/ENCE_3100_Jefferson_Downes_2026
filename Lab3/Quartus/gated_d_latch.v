@@ -4,7 +4,7 @@ module gated_d_latch(
 	output Q
 );
 
-	wire R, S_g, R_g, Qa, Qb;
+	wire R, S_g, R_g, Qa, Qb /* synthesis keep */;
 
 	assign R = ~D;
 

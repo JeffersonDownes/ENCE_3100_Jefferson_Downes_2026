@@ -1,0 +1,35 @@
+
+State Machine - |de10lite_top|tx_packet:tx|ptype
+Name ptype.00000011 ptype.00000010 ptype.00000001 ptype.00000000 
+ptype.00000000 0 0 0 0 
+ptype.00000001 0 0 1 1 
+ptype.00000010 0 1 0 1 
+ptype.00000011 1 0 0 1 
+
+State Machine - |de10lite_top|tx_packet:tx|state
+Name state.T_IDLE state.T_WAIT state.T_BYTE 
+state.T_IDLE 0 0 0 
+state.T_BYTE 1 0 1 
+state.T_WAIT 1 1 0 
+
+State Machine - |de10lite_top|weight_loader:loader|state
+Name state.L_CK1 state.L_CK0 state.L_DATA state.L_LEN2 state.L_LEN1 state.L_LEN0 state.L_ID state.L_IDLE 
+state.L_IDLE 0 0 0 0 0 0 0 0 
+state.L_ID 0 0 0 0 0 0 1 1 
+state.L_LEN0 0 0 0 0 0 1 0 1 
+state.L_LEN1 0 0 0 0 1 0 0 1 
+state.L_LEN2 0 0 0 1 0 0 0 1 
+state.L_DATA 0 0 1 0 0 0 0 1 
+state.L_CK0 0 1 0 0 0 0 0 1 
+state.L_CK1 1 0 0 0 0 0 0 1 
+
+State Machine - |de10lite_top|nn_core_mlp_784_32_10:core.nn|state
+Name state.S_DONE state.S_ACT state.S_DRAIN state.S_MAC state.S_BIAS_LOAD state.S_BIAS_HI state.S_BIAS_LO state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 
+state.S_BIAS_LO 0 0 0 0 0 0 1 1 
+state.S_BIAS_HI 0 0 0 0 0 1 0 1 
+state.S_BIAS_LOAD 0 0 0 0 1 0 0 1 
+state.S_MAC 0 0 0 1 0 0 0 1 
+state.S_DRAIN 0 0 1 0 0 0 0 1 
+state.S_ACT 0 1 0 0 0 0 0 1 
+state.S_DONE 1 0 0 0 0 0 0 1 

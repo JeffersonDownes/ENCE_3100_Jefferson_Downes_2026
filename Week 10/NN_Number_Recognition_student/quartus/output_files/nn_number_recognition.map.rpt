@@ -1,0 +1,1439 @@
+Analysis & Synthesis report for nn_number_recognition
+Tue Nov 10 10:57:37 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. State Machine - |de10lite_top|tx_packet:tx|ptype
+ 11. State Machine - |de10lite_top|tx_packet:tx|state
+ 12. State Machine - |de10lite_top|weight_loader:loader|state
+ 13. State Machine - |de10lite_top|nn_core_mlp_784_32_10:core.nn|state
+ 14. Registers Removed During Synthesis
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Registers Added for RAM Pass-Through Logic
+ 18. Registers Packed Into Inferred Megafunctions
+ 19. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 20. Source assignments for nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0|altsyncram_6nb1:auto_generated
+ 21. Source assignments for nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0|altsyncram_mhg1:auto_generated
+ 22. Source assignments for nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0|altsyncram_hjh1:auto_generated
+ 23. Source assignments for frame_buffer:fbuf|altsyncram:mem_rtl_0|altsyncram_kdg1:auto_generated
+ 24. Parameter Settings for User Entity Instance: Top-level Entity: |de10lite_top
+ 25. Parameter Settings for User Entity Instance: async_receiver:uart_rx
+ 26. Parameter Settings for User Entity Instance: async_receiver:uart_rx|BaudTickGen:tickgen
+ 27. Parameter Settings for User Entity Instance: async_transmitter:uart_tx
+ 28. Parameter Settings for User Entity Instance: async_transmitter:uart_tx|BaudTickGen:tickgen
+ 29. Parameter Settings for User Entity Instance: weight_loader:loader
+ 30. Parameter Settings for User Entity Instance: status_display:display
+ 31. Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0
+ 32. Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0
+ 33. Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0
+ 34. Parameter Settings for Inferred Entity Instance: frame_buffer:fbuf|altsyncram:mem_rtl_0
+ 35. Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0
+ 36. altsyncram Parameter Settings by Entity Instance
+ 37. lpm_mult Parameter Settings by Entity Instance
+ 38. Port Connectivity Checks: "status_display:display|char2seg:d5"
+ 39. Port Connectivity Checks: "status_display:display|char2seg:d4"
+ 40. Port Connectivity Checks: "status_display:display|char2seg:d3"
+ 41. Port Connectivity Checks: "status_display:display|char2seg:d2"
+ 42. Port Connectivity Checks: "status_display:display|char2seg:d1"
+ 43. Port Connectivity Checks: "status_display:display|char2seg:d0"
+ 44. Port Connectivity Checks: "tx_packet:tx"
+ 45. Port Connectivity Checks: "async_receiver:uart_rx|BaudTickGen:tickgen"
+ 46. Port Connectivity Checks: "async_receiver:uart_rx"
+ 47. Post-Synthesis Netlist Statistics for Top Partition
+ 48. Elapsed Time Per Partition
+ 49. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Nov 10 10:57:37 2026           ;
+; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                      ; nn_number_recognition                           ;
+; Top-level Entity Name              ; de10lite_top                                    ;
+; Family                             ; MAX 10                                          ;
+; Total logic elements               ; 2,550                                           ;
+;     Total combinational functions  ; 2,216                                           ;
+;     Dedicated logic registers      ; 819                                             ;
+; Total registers                    ; 819                                             ;
+; Total pins                         ; 63                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 218,720                                         ;
+; Embedded Multiplier 9-bit elements ; 1                                               ;
+; Total PLLs                         ; 0                                               ;
+; UFM blocks                         ; 0                                               ;
+; ADC blocks                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                 ;
++------------------------------------------------------------------+--------------------+-----------------------+
+; Option                                                           ; Setting            ; Default Value         ;
++------------------------------------------------------------------+--------------------+-----------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                       ;
+; Top-level entity name                                            ; de10lite_top       ; nn_number_recognition ;
+; Family name                                                      ; MAX 10             ; Cyclone V             ;
+; Use smart compilation                                            ; Off                ; Off                   ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                    ;
+; Enable compact report table                                      ; Off                ; Off                   ;
+; Restructure Multiplexers                                         ; Auto               ; Auto                  ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                   ;
+; Preserve fewer node names                                        ; On                 ; On                    ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable                ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001          ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993             ;
+; State Machine Processing                                         ; Auto               ; Auto                  ;
+; Safe State Machine                                               ; Off                ; Off                   ;
+; Extract Verilog State Machines                                   ; On                 ; On                    ;
+; Extract VHDL State Machines                                      ; On                 ; On                    ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                   ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000                  ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                   ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                    ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                    ;
+; Parallel Synthesis                                               ; On                 ; On                    ;
+; DSP Block Balancing                                              ; Auto               ; Auto                  ;
+; NOT Gate Push-Back                                               ; On                 ; On                    ;
+; Power-Up Don't Care                                              ; On                 ; On                    ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                   ;
+; Remove Duplicate Registers                                       ; On                 ; On                    ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                   ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                   ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                   ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                   ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                   ;
+; Ignore SOFT Buffers                                              ; On                 ; On                    ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                   ;
+; Optimization Technique                                           ; Balanced           ; Balanced              ;
+; Carry Chain Length                                               ; 70                 ; 70                    ;
+; Auto Carry Chains                                                ; On                 ; On                    ;
+; Auto Open-Drain Pins                                             ; On                 ; On                    ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                   ;
+; Auto ROM Replacement                                             ; On                 ; On                    ;
+; Auto RAM Replacement                                             ; On                 ; On                    ;
+; Auto DSP Block Replacement                                       ; On                 ; On                    ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto                  ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto                  ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                    ;
+; Strict RAM Replacement                                           ; Off                ; Off                   ;
+; Allow Synchronous Control Signals                                ; On                 ; On                    ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                   ;
+; Auto RAM Block Balancing                                         ; On                 ; On                    ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                   ;
+; Auto Resource Sharing                                            ; Off                ; Off                   ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                   ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                   ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                   ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                    ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                   ;
+; Timing-Driven Synthesis                                          ; On                 ; On                    ;
+; Report Parameter Settings                                        ; On                 ; On                    ;
+; Report Source Assignments                                        ; On                 ; On                    ;
+; Report Connectivity Checks                                       ; On                 ; On                    ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                   ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                     ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation    ;
+; HDL message level                                                ; Level2             ; Level2                ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                   ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000                  ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000                  ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                   ;
+; Clock MUX Protection                                             ; On                 ; On                    ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                   ;
+; Block Design Naming                                              ; Auto               ; Auto                  ;
+; SDC constraint protection                                        ; Off                ; Off                   ;
+; Synthesis Effort                                                 ; Auto               ; Auto                  ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                    ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                   ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium                ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto                  ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                    ;
++------------------------------------------------------------------+--------------------+-----------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                               ;
++---------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path      ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                      ; Library ;
++---------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; ../verilog/de10lite_top.v             ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v             ;         ;
+; ../verilog/rx_parser.v                ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/rx_parser.v                ;         ;
+; ../verilog/frame_buffer.v             ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/frame_buffer.v             ;         ;
+; ../verilog/weight_loader.v            ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/weight_loader.v            ;         ;
+; ../verilog/tx_packet.v                ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/tx_packet.v                ;         ;
+; ../verilog/status_display.v           ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/status_display.v           ;         ;
+; ../verilog/nn/nn_core_mlp_784_32_10.v ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v ;         ;
+; ../verilog/uart/async_transmitter.v   ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v   ;         ;
+; ../verilog/seg7/char2seg.v            ; yes             ; User Verilog HDL File        ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/seg7/char2seg.v            ;         ;
+; altsyncram.tdf                        ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf                                                                             ;         ;
+; stratix_ram_block.inc                 ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                      ;         ;
+; lpm_mux.inc                           ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mux.inc                                                                                ;         ;
+; lpm_decode.inc                        ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_decode.inc                                                                             ;         ;
+; aglobal251.inc                        ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc                                                                             ;         ;
+; a_rdenreg.inc                         ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/a_rdenreg.inc                                                                              ;         ;
+; altrom.inc                            ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altrom.inc                                                                                 ;         ;
+; altram.inc                            ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altram.inc                                                                                 ;         ;
+; altdpram.inc                          ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altdpram.inc                                                                               ;         ;
+; db/altsyncram_6nb1.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_6nb1.tdf     ;         ;
+; db/altsyncram_mhg1.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_mhg1.tdf     ;         ;
+; db/decode_c7a.tdf                     ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/decode_c7a.tdf          ;         ;
+; db/mux_s1b.tdf                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/mux_s1b.tdf             ;         ;
+; db/altsyncram_hjh1.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_hjh1.tdf     ;         ;
+; db/altsyncram_kdg1.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_kdg1.tdf     ;         ;
+; lpm_mult.tdf                          ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf                                                                               ;         ;
+; lpm_add_sub.inc                       ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_add_sub.inc                                                                            ;         ;
+; multcore.inc                          ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.inc                                                                               ;         ;
+; bypassff.inc                          ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/bypassff.inc                                                                               ;         ;
+; altshift.inc                          ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altshift.inc                                                                               ;         ;
+; db/mult_vds.tdf                       ; yes             ; Auto-Generated Megafunction  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/mult_vds.tdf            ;         ;
++---------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                       ;
++---------------------------------------------+---------------------+
+; Resource                                    ; Usage               ;
++---------------------------------------------+---------------------+
+; Estimated Total logic elements              ; 2,550               ;
+;                                             ;                     ;
+; Total combinational functions               ; 2216                ;
+; Logic element usage by number of LUT inputs ;                     ;
+;     -- 4 input functions                    ; 887                 ;
+;     -- 3 input functions                    ; 884                 ;
+;     -- <=2 input functions                  ; 445                 ;
+;                                             ;                     ;
+; Logic elements by mode                      ;                     ;
+;     -- normal mode                          ; 1458                ;
+;     -- arithmetic mode                      ; 758                 ;
+;                                             ;                     ;
+; Total registers                             ; 819                 ;
+;     -- Dedicated logic registers            ; 819                 ;
+;     -- I/O registers                        ; 0                   ;
+;                                             ;                     ;
+; I/O pins                                    ; 63                  ;
+; Total memory bits                           ; 218720              ;
+;                                             ;                     ;
+; Embedded Multiplier 9-bit elements          ; 1                   ;
+;                                             ;                     ;
+; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
+; Maximum fan-out                             ; 882                 ;
+; Total fan-out                               ; 11098               ;
+; Average fan-out                             ; 3.44                ;
++---------------------------------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                         ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                 ; Entity Name           ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; |de10lite_top                             ; 2216 (14)           ; 819 (4)                   ; 218720      ; 0          ; 1            ; 1       ; 0         ; 63   ; 0            ; 0          ; |de10lite_top                                                                                                       ; de10lite_top          ; work         ;
+;    |async_receiver:uart_rx|               ; 32 (20)             ; 32 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|async_receiver:uart_rx                                                                                ; async_receiver        ; work         ;
+;       |BaudTickGen:tickgen|               ; 12 (12)             ; 11 (11)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|async_receiver:uart_rx|BaudTickGen:tickgen                                                            ; BaudTickGen           ; work         ;
+;    |async_transmitter:uart_tx|            ; 37 (23)             ; 26 (12)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|async_transmitter:uart_tx                                                                             ; async_transmitter     ; work         ;
+;       |BaudTickGen:tickgen|               ; 14 (14)             ; 14 (14)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|async_transmitter:uart_tx|BaudTickGen:tickgen                                                         ; BaudTickGen           ; work         ;
+;    |frame_buffer:fbuf|                    ; 60 (60)             ; 34 (34)                   ; 14336       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|frame_buffer:fbuf                                                                                     ; frame_buffer          ; work         ;
+;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 14336       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|frame_buffer:fbuf|altsyncram:mem_rtl_0                                                                ; altsyncram            ; work         ;
+;          |altsyncram_kdg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 14336       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|frame_buffer:fbuf|altsyncram:mem_rtl_0|altsyncram_kdg1:auto_generated                                 ; altsyncram_kdg1       ; work         ;
+;    |nn_core_mlp_784_32_10:core.nn|        ; 565 (541)           ; 201 (199)                 ; 204384      ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn                                                                         ; nn_core_mlp_784_32_10 ; work         ;
+;       |altsyncram:hid_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 256         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0                                                    ; altsyncram            ; work         ;
+;          |altsyncram_hjh1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 256         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0|altsyncram_hjh1:auto_generated                     ; altsyncram_hjh1       ; work         ;
+;       |altsyncram:scores_rtl_0|           ; 0 (0)               ; 0 (0)                     ; 160         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0                                                 ; altsyncram            ; work         ;
+;          |altsyncram_6nb1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 160         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0|altsyncram_6nb1:auto_generated                  ; altsyncram_6nb1       ; work         ;
+;       |altsyncram:wmem_rtl_0|             ; 24 (0)              ; 2 (0)                     ; 203968      ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0                                                   ; altsyncram            ; work         ;
+;          |altsyncram_mhg1:auto_generated| ; 24 (0)              ; 2 (2)                     ; 203968      ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0|altsyncram_mhg1:auto_generated                    ; altsyncram_mhg1       ; work         ;
+;             |decode_c7a:decode2|          ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0|altsyncram_mhg1:auto_generated|decode_c7a:decode2 ; decode_c7a            ; work         ;
+;             |mux_s1b:mux3|                ; 16 (16)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0|altsyncram_mhg1:auto_generated|mux_s1b:mux3       ; mux_s1b               ; work         ;
+;       |lpm_mult:Mult0|                    ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0                                                          ; lpm_mult              ; work         ;
+;          |mult_vds:auto_generated|        ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0|mult_vds:auto_generated                                  ; mult_vds              ; work         ;
+;    |rx_parser:parser|                     ; 120 (120)           ; 76 (76)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|rx_parser:parser                                                                                      ; rx_parser             ; work         ;
+;    |status_display:display|               ; 785 (529)           ; 54 (54)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|status_display:display                                                                                ; status_display        ; work         ;
+;       |char2seg:d0|                       ; 64 (64)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|status_display:display|char2seg:d0                                                                    ; char2seg              ; work         ;
+;       |char2seg:d1|                       ; 65 (65)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|status_display:display|char2seg:d1                                                                    ; char2seg              ; work         ;
+;       |char2seg:d2|                       ; 59 (59)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|status_display:display|char2seg:d2                                                                    ; char2seg              ; work         ;
+;       |char2seg:d3|                       ; 66 (66)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|status_display:display|char2seg:d3                                                                    ; char2seg              ; work         ;
+;       |char2seg:d4|                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|status_display:display|char2seg:d4                                                                    ; char2seg              ; work         ;
+;    |tx_packet:tx|                         ; 370 (370)           ; 240 (240)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|tx_packet:tx                                                                                          ; tx_packet             ; work         ;
+;    |weight_loader:loader|                 ; 233 (233)           ; 152 (152)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |de10lite_top|weight_loader:loader                                                                                  ; weight_loader         ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                      ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; Name                                                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF  ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; frame_buffer:fbuf|altsyncram:mem_rtl_0|altsyncram_kdg1:auto_generated|ALTSYNCRAM                ; AUTO ; Simple Dual Port ; 2048         ; 7            ; 2048         ; 7            ; 14336  ; None ;
+; nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0|altsyncram_hjh1:auto_generated|ALTSYNCRAM    ; AUTO ; Simple Dual Port ; 32           ; 8            ; 32           ; 8            ; 256    ; None ;
+; nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0|altsyncram_6nb1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 10           ; 16           ; 10           ; 16           ; 160    ; None ;
+; nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0|altsyncram_mhg1:auto_generated|ALTSYNCRAM   ; AUTO ; Simple Dual Port ; 25496        ; 8            ; 25496        ; 8            ; 203968 ; None ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 1           ;
+; Simple Multipliers (18-bit)           ; 0           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 1           ;
+; Signed Embedded Multipliers           ; 1           ;
+; Unsigned Embedded Multipliers         ; 0           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |de10lite_top|tx_packet:tx|ptype                                   ;
++----------------+----------------+----------------+----------------+----------------+
+; Name           ; ptype.00000011 ; ptype.00000010 ; ptype.00000001 ; ptype.00000000 ;
++----------------+----------------+----------------+----------------+----------------+
+; ptype.00000000 ; 0              ; 0              ; 0              ; 0              ;
+; ptype.00000001 ; 0              ; 0              ; 1              ; 1              ;
+; ptype.00000010 ; 0              ; 1              ; 0              ; 1              ;
+; ptype.00000011 ; 1              ; 0              ; 0              ; 1              ;
++----------------+----------------+----------------+----------------+----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------+
+; State Machine - |de10lite_top|tx_packet:tx|state          ;
++--------------+--------------+--------------+--------------+
+; Name         ; state.T_IDLE ; state.T_WAIT ; state.T_BYTE ;
++--------------+--------------+--------------+--------------+
+; state.T_IDLE ; 0            ; 0            ; 0            ;
+; state.T_BYTE ; 1            ; 0            ; 1            ;
+; state.T_WAIT ; 1            ; 1            ; 0            ;
++--------------+--------------+--------------+--------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |de10lite_top|weight_loader:loader|state                                                                         ;
++--------------+-------------+-------------+--------------+--------------+--------------+--------------+------------+--------------+
+; Name         ; state.L_CK1 ; state.L_CK0 ; state.L_DATA ; state.L_LEN2 ; state.L_LEN1 ; state.L_LEN0 ; state.L_ID ; state.L_IDLE ;
++--------------+-------------+-------------+--------------+--------------+--------------+--------------+------------+--------------+
+; state.L_IDLE ; 0           ; 0           ; 0            ; 0            ; 0            ; 0            ; 0          ; 0            ;
+; state.L_ID   ; 0           ; 0           ; 0            ; 0            ; 0            ; 0            ; 1          ; 1            ;
+; state.L_LEN0 ; 0           ; 0           ; 0            ; 0            ; 0            ; 1            ; 0          ; 1            ;
+; state.L_LEN1 ; 0           ; 0           ; 0            ; 0            ; 1            ; 0            ; 0          ; 1            ;
+; state.L_LEN2 ; 0           ; 0           ; 0            ; 1            ; 0            ; 0            ; 0          ; 1            ;
+; state.L_DATA ; 0           ; 0           ; 1            ; 0            ; 0            ; 0            ; 0          ; 1            ;
+; state.L_CK0  ; 0           ; 1           ; 0            ; 0            ; 0            ; 0            ; 0          ; 1            ;
+; state.L_CK1  ; 1           ; 0           ; 0            ; 0            ; 0            ; 0            ; 0          ; 1            ;
++--------------+-------------+-------------+--------------+--------------+--------------+--------------+------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |de10lite_top|nn_core_mlp_784_32_10:core.nn|state                                                                                   ;
++-------------------+--------------+-------------+---------------+-------------+-------------------+-----------------+-----------------+--------------+
+; Name              ; state.S_DONE ; state.S_ACT ; state.S_DRAIN ; state.S_MAC ; state.S_BIAS_LOAD ; state.S_BIAS_HI ; state.S_BIAS_LO ; state.S_IDLE ;
++-------------------+--------------+-------------+---------------+-------------+-------------------+-----------------+-----------------+--------------+
+; state.S_IDLE      ; 0            ; 0           ; 0             ; 0           ; 0                 ; 0               ; 0               ; 0            ;
+; state.S_BIAS_LO   ; 0            ; 0           ; 0             ; 0           ; 0                 ; 0               ; 1               ; 1            ;
+; state.S_BIAS_HI   ; 0            ; 0           ; 0             ; 0           ; 0                 ; 1               ; 0               ; 1            ;
+; state.S_BIAS_LOAD ; 0            ; 0           ; 0             ; 0           ; 1                 ; 0               ; 0               ; 1            ;
+; state.S_MAC       ; 0            ; 0           ; 0             ; 1           ; 0                 ; 0               ; 0               ; 1            ;
+; state.S_DRAIN     ; 0            ; 0           ; 1             ; 0           ; 0                 ; 0               ; 0               ; 1            ;
+; state.S_ACT       ; 0            ; 1           ; 0             ; 0           ; 0                 ; 0               ; 0               ; 1            ;
+; state.S_DONE      ; 1            ; 0           ; 0             ; 0           ; 0                 ; 0               ; 0               ; 1            ;
++-------------------+--------------+-------------+---------------+-------------+-------------------+-----------------+-----------------+--------------+
+
+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++----------------------------------------+------------------------------------------+
+; Register name                          ; Reason for Removal                       ;
++----------------------------------------+------------------------------------------+
+; tx_packet:tx|r_flags[2..7]             ; Stuck at GND due to stuck port data_in   ;
+; rx_parser:parser|row_base[0,1]         ; Stuck at GND due to stuck port data_in   ;
+; tx_packet:tx|plen[5..7]                ; Merged with tx_packet:tx|plen[3]         ;
+; tx_packet:tx|plen[3]                   ; Stuck at GND due to stuck port data_in   ;
+; rx_parser:parser|row[0]                ; Merged with rx_parser:parser|row_base[2] ;
+; frame_buffer:fbuf|frame_sum[0]         ; Lost fanout                              ;
+; tx_packet:tx|plen[1]                   ; Stuck at VCC due to stuck port data_in   ;
+; tx_packet:tx|plen[2]                   ; Merged with tx_packet:tx|plen[0]         ;
+; tx_packet:tx|ptype~2                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~3                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~4                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~5                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~6                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~7                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~8                   ; Lost fanout                              ;
+; tx_packet:tx|ptype~9                   ; Lost fanout                              ;
+; weight_loader:loader|state~9           ; Lost fanout                              ;
+; weight_loader:loader|state~10          ; Lost fanout                              ;
+; weight_loader:loader|state~11          ; Lost fanout                              ;
+; nn_core_mlp_784_32_10:core.nn|state~6  ; Lost fanout                              ;
+; nn_core_mlp_784_32_10:core.nn|state~7  ; Lost fanout                              ;
+; nn_core_mlp_784_32_10:core.nn|state~8  ; Lost fanout                              ;
+; Total Number of Removed Registers = 30 ;                                          ;
++----------------------------------------+------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 819   ;
+; Number of registers using Synchronous Clear  ; 111   ;
+; Number of registers using Synchronous Load   ; 99    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 648   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; async_receiver:uart_rx|RxD_bit         ; 4       ;
+; async_receiver:uart_rx|Filter_cnt[0]   ; 3       ;
+; async_receiver:uart_rx|Filter_cnt[1]   ; 3       ;
+; async_receiver:uart_rx|RxD_sync[1]     ; 2       ;
+; async_receiver:uart_rx|RxD_sync[0]     ; 1       ;
+; Total number of inverted registers = 5 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                                         ;
++-------------------------------------------------------+--------------------------------------------+
+; Register Name                                         ; RAM Name                                   ;
++-------------------------------------------------------+--------------------------------------------+
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[0]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[1]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[2]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[3]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[4]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[5]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[6]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[7]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[8]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[9]  ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[10] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[11] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[12] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[13] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[14] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[15] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[16] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[17] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[18] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[19] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[20] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[21] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[22] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[23] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|scores_rtl_0_bypass[24] ; nn_core_mlp_784_32_10:core.nn|scores_rtl_0 ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[0]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[1]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[2]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[3]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[4]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[5]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[6]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[7]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[8]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[9]     ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[10]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[11]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[12]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[13]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[14]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[15]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[16]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[17]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
+; nn_core_mlp_784_32_10:core.nn|hid_rtl_0_bypass[18]    ; nn_core_mlp_784_32_10:core.nn|hid_rtl_0    ;
++-------------------------------------------------------+--------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                              ;
++-----------------------------------------+------------------------------------------+------+
+; Register Name                           ; Megafunction                             ; Type ;
++-----------------------------------------+------------------------------------------+------+
+; nn_core_mlp_784_32_10:core.nn|w_q[0..7] ; nn_core_mlp_784_32_10:core.nn|wmem_rtl_0 ; RAM  ;
+; frame_buffer:fbuf|rd_data[0..6]         ; frame_buffer:fbuf|mem_rtl_0              ; RAM  ;
++-----------------------------------------+------------------------------------------+------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |de10lite_top|weight_loader:loader|f1[7]                 ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|digit[0]     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |de10lite_top|status_display:display|toggle              ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |de10lite_top|async_transmitter:uart_tx|TxD_shift[4]     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |de10lite_top|rx_parser:parser|col[1]                    ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |de10lite_top|frame_buffer:fbuf|sum_acc[5]               ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |de10lite_top|frame_buffer:fbuf|wbank                    ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |de10lite_top|weight_loader:loader|checksum[4]           ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |de10lite_top|tx_packet:tx|cap_i[3]                      ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|acc[12]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |de10lite_top|weight_loader:loader|length[23]            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |de10lite_top|weight_loader:loader|length[12]            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |de10lite_top|weight_loader:loader|length[4]             ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |de10lite_top|weight_loader:loader|count[1]              ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |de10lite_top|tx_packet:tx|plen[1]                       ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |de10lite_top|status_display:display|show_cnt[25]        ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |de10lite_top|weight_loader:loader|idle_cnt[14]          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |de10lite_top|weight_loader:loader|f2[5]                 ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |de10lite_top|rx_parser:parser|identify_req              ;
+; 6:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|w_ptr[10]    ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|neuron[1]    ;
+; 7:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|b_ptr[13]    ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 12 LEs               ; 9 LEs                  ; Yes        ; |de10lite_top|weight_loader:loader|status[0]             ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|scores       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|ShiftRight0  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|half[17]     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|half[9]      ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|score_sat[4] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|score[7]     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |de10lite_top|tx_packet:tx|f2                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |de10lite_top|status_display:display|LEDR[9]             ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |de10lite_top|status_display:display|c2[6]               ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |de10lite_top|tx_packet:tx|score_sel                     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|ShiftRight0  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|ShiftRight0  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |de10lite_top|status_display:display|c1[5]               ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |de10lite_top|status_display:display|c1[3]               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |de10lite_top|status_display:display|c2[4]               ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |de10lite_top|status_display:display|c2[3]               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |de10lite_top|status_display:display|c3[5]               ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |de10lite_top|status_display:display|c3[1]               ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |de10lite_top|tx_packet:tx|ptype                         ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; No         ; |de10lite_top|weight_loader:loader|state                 ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|ShiftRight0  ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |de10lite_top|status_display:display|c0[5]               ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |de10lite_top|status_display:display|c0[0]               ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |de10lite_top|tx_packet:tx|state                         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |de10lite_top|nn_core_mlp_784_32_10:core.nn|state        ;
+; 267:1              ; 3 bits    ; 534 LEs       ; 18 LEs               ; 516 LEs                ; No         ; |de10lite_top|tx_packet:tx|packet_byte[5]                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Source assignments for nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0|altsyncram_6nb1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                            ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                             ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Source assignments for nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0|altsyncram_mhg1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                          ;
++---------------------------------+--------------------+------+---------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                           ;
++---------------------------------+--------------------+------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Source assignments for nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0|altsyncram_hjh1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                         ;
++---------------------------------+--------------------+------+--------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                          ;
++---------------------------------+--------------------+------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Source assignments for frame_buffer:fbuf|altsyncram:mem_rtl_0|altsyncram_kdg1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------+
+; Assignment                      ; Value              ; From ; To                             ;
++---------------------------------+--------------------+------+--------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                              ;
++---------------------------------+--------------------+------+--------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |de10lite_top ;
++-----------------+-----------+------------------------------------------------+
+; Parameter Name  ; Value     ; Type                                           ;
++-----------------+-----------+------------------------------------------------+
+; CLK_HZ          ; 50000000  ; Signed Integer                                 ;
+; BAUD            ; 921600    ; Signed Integer                                 ;
+; MODEL           ; 1         ; Signed Integer                                 ;
+; TIMEOUT_CYCLES  ; 5000000   ; Signed Integer                                 ;
+; SHOW_CYCLES     ; 150000000 ; Signed Integer                                 ;
+; EMPTY_THRESHOLD ; 1270      ; Signed Integer                                 ;
++-----------------+-----------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: async_receiver:uart_rx ;
++----------------+----------+-----------------------------------------+
+; Parameter Name ; Value    ; Type                                    ;
++----------------+----------+-----------------------------------------+
+; ClkFrequency   ; 50000000 ; Signed Integer                          ;
+; Baud           ; 921600   ; Signed Integer                          ;
+; Oversampling   ; 8        ; Signed Integer                          ;
++----------------+----------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: async_receiver:uart_rx|BaudTickGen:tickgen ;
++----------------+----------+-------------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                        ;
++----------------+----------+-------------------------------------------------------------+
+; ClkFrequency   ; 50000000 ; Signed Integer                                              ;
+; Baud           ; 921600   ; Signed Integer                                              ;
+; Oversampling   ; 8        ; Signed Integer                                              ;
++----------------+----------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: async_transmitter:uart_tx ;
++----------------+----------+--------------------------------------------+
+; Parameter Name ; Value    ; Type                                       ;
++----------------+----------+--------------------------------------------+
+; ClkFrequency   ; 50000000 ; Signed Integer                             ;
+; Baud           ; 921600   ; Signed Integer                             ;
++----------------+----------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: async_transmitter:uart_tx|BaudTickGen:tickgen ;
++----------------+----------+----------------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                           ;
++----------------+----------+----------------------------------------------------------------+
+; ClkFrequency   ; 50000000 ; Signed Integer                                                 ;
+; Baud           ; 921600   ; Signed Integer                                                 ;
+; Oversampling   ; 1        ; Signed Integer                                                 ;
++----------------+----------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: weight_loader:loader ;
++----------------+---------+----------------------------------------+
+; Parameter Name ; Value   ; Type                                   ;
++----------------+---------+----------------------------------------+
+; TIMEOUT_CYCLES ; 5000000 ; Signed Integer                         ;
++----------------+---------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: status_display:display ;
++----------------+-----------+----------------------------------------+
+; Parameter Name ; Value     ; Type                                   ;
++----------------+-----------+----------------------------------------+
+; SHOW_CYCLES    ; 150000000 ; Signed Integer                         ;
++----------------+-----------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0 ;
++------------------------------------+----------------------+--------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                       ;
++------------------------------------+----------------------+--------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                    ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                               ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                             ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                    ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                    ;
+; WIDTH_A                            ; 16                   ; Untyped                                    ;
+; WIDTHAD_A                          ; 4                    ; Untyped                                    ;
+; NUMWORDS_A                         ; 10                   ; Untyped                                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                    ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                    ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                    ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                    ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                    ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                    ;
+; WIDTH_B                            ; 16                   ; Untyped                                    ;
+; WIDTHAD_B                          ; 4                    ; Untyped                                    ;
+; NUMWORDS_B                         ; 10                   ; Untyped                                    ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                    ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                    ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                    ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                    ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                    ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                    ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                    ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                    ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                    ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                    ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                    ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                    ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                    ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                    ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                    ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                    ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                    ;
+; DEVICE_FAMILY                      ; MAX 10               ; Untyped                                    ;
+; CBXI_PARAMETER                     ; altsyncram_6nb1      ; Untyped                                    ;
++------------------------------------+----------------------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0 ;
++------------------------------------+----------------------+------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                     ;
++------------------------------------+----------------------+------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                  ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                  ;
+; WIDTH_A                            ; 8                    ; Untyped                                  ;
+; WIDTHAD_A                          ; 15                   ; Untyped                                  ;
+; NUMWORDS_A                         ; 25496                ; Untyped                                  ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                  ;
+; WIDTH_B                            ; 8                    ; Untyped                                  ;
+; WIDTHAD_B                          ; 15                   ; Untyped                                  ;
+; NUMWORDS_B                         ; 25496                ; Untyped                                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                  ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                  ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                  ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                  ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                  ;
+; DEVICE_FAMILY                      ; MAX 10               ; Untyped                                  ;
+; CBXI_PARAMETER                     ; altsyncram_mhg1      ; Untyped                                  ;
++------------------------------------+----------------------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0 ;
++------------------------------------+----------------------+-----------------------------------------+
+; Parameter Name                     ; Value                ; Type                                    ;
++------------------------------------+----------------------+-----------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                 ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                          ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                 ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                 ;
+; WIDTH_A                            ; 8                    ; Untyped                                 ;
+; WIDTHAD_A                          ; 5                    ; Untyped                                 ;
+; NUMWORDS_A                         ; 32                   ; Untyped                                 ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                 ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                 ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                 ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                 ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                 ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                 ;
+; WIDTH_B                            ; 8                    ; Untyped                                 ;
+; WIDTHAD_B                          ; 5                    ; Untyped                                 ;
+; NUMWORDS_B                         ; 32                   ; Untyped                                 ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                 ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                 ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                 ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                 ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                 ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                 ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                 ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                 ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                 ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                 ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                 ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                 ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                 ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                 ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                 ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                 ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                 ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                 ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                 ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                 ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                 ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                 ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                 ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                 ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                 ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                 ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                 ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                 ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                 ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                 ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                 ;
+; DEVICE_FAMILY                      ; MAX 10               ; Untyped                                 ;
+; CBXI_PARAMETER                     ; altsyncram_hjh1      ; Untyped                                 ;
++------------------------------------+----------------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: frame_buffer:fbuf|altsyncram:mem_rtl_0 ;
++------------------------------------+----------------------+-----------------------------+
+; Parameter Name                     ; Value                ; Type                        ;
++------------------------------------+----------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                     ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                     ;
+; WIDTH_A                            ; 7                    ; Untyped                     ;
+; WIDTHAD_A                          ; 11                   ; Untyped                     ;
+; NUMWORDS_A                         ; 2048                 ; Untyped                     ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                     ;
+; WIDTH_B                            ; 7                    ; Untyped                     ;
+; WIDTHAD_B                          ; 11                   ; Untyped                     ;
+; NUMWORDS_B                         ; 2048                 ; Untyped                     ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                     ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                     ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                     ;
+; BYTE_SIZE                          ; 8                    ; Untyped                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                     ;
+; INIT_FILE                          ; UNUSED               ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                     ;
+; DEVICE_FAMILY                      ; MAX 10               ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_kdg1      ; Untyped                     ;
++------------------------------------+----------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0 ;
++------------------------------------------------+----------+-----------------------------------+
+; Parameter Name                                 ; Value    ; Type                              ;
++------------------------------------------------+----------+-----------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                    ;
+; LPM_WIDTHA                                     ; 9        ; Untyped                           ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                           ;
+; LPM_WIDTHP                                     ; 17       ; Untyped                           ;
+; LPM_WIDTHR                                     ; 17       ; Untyped                           ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                           ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                           ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                           ;
+; LATENCY                                        ; 0        ; Untyped                           ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                           ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                           ;
+; USE_EAB                                        ; OFF      ; Untyped                           ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                           ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                           ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                           ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K               ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                           ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                           ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                           ;
+; CBXI_PARAMETER                                 ; mult_vds ; Untyped                           ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                           ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                           ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                           ;
++------------------------------------------------+----------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                  ;
++-------------------------------------------+-------------------------------------------------------+
+; Name                                      ; Value                                                 ;
++-------------------------------------------+-------------------------------------------------------+
+; Number of entity instances                ; 4                                                     ;
+; Entity Instance                           ; nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 16                                                    ;
+;     -- NUMWORDS_A                         ; 10                                                    ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 16                                                    ;
+;     -- NUMWORDS_B                         ; 10                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0   ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 25496                                                 ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 8                                                     ;
+;     -- NUMWORDS_B                         ; 25496                                                 ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                              ;
+; Entity Instance                           ; nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0    ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 32                                                    ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 8                                                     ;
+;     -- NUMWORDS_B                         ; 32                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                              ;
+; Entity Instance                           ; frame_buffer:fbuf|altsyncram:mem_rtl_0                ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 7                                                     ;
+;     -- NUMWORDS_A                         ; 2048                                                  ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 7                                                     ;
+;     -- NUMWORDS_B                         ; 2048                                                  ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                              ;
++-------------------------------------------+-------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                       ;
++---------------------------------------+----------------------------------------------+
+; Name                                  ; Value                                        ;
++---------------------------------------+----------------------------------------------+
+; Number of entity instances            ; 1                                            ;
+; Entity Instance                       ; nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 9                                            ;
+;     -- LPM_WIDTHB                     ; 8                                            ;
+;     -- LPM_WIDTHP                     ; 17                                           ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                       ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                           ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                           ;
+;     -- USE_EAB                        ; OFF                                          ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                         ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                           ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                           ;
++---------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "status_display:display|char2seg:d5" ;
++------------+-------+----------+--------------------------------+
+; Port       ; Type  ; Severity ; Details                        ;
++------------+-------+----------+--------------------------------+
+; char[4..3] ; Input ; Info     ; Stuck at GND                   ;
+; char[7]    ; Input ; Info     ; Stuck at GND                   ;
+; char[1]    ; Input ; Info     ; Stuck at GND                   ;
++------------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "status_display:display|char2seg:d4" ;
++------------+-------+----------+--------------------------------+
+; Port       ; Type  ; Severity ; Details                        ;
++------------+-------+----------+--------------------------------+
+; char[3..2] ; Input ; Info     ; Stuck at GND                   ;
+; char[7]    ; Input ; Info     ; Stuck at GND                   ;
+; char[5]    ; Input ; Info     ; Stuck at VCC                   ;
+; char[0]    ; Input ; Info     ; Stuck at GND                   ;
++------------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "status_display:display|char2seg:d3" ;
++---------+-------+----------+-----------------------------------+
+; Port    ; Type  ; Severity ; Details                           ;
++---------+-------+----------+-----------------------------------+
+; char[7] ; Input ; Info     ; Stuck at GND                      ;
++---------+-------+----------+-----------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "status_display:display|char2seg:d2" ;
++---------+-------+----------+-----------------------------------+
+; Port    ; Type  ; Severity ; Details                           ;
++---------+-------+----------+-----------------------------------+
+; char[7] ; Input ; Info     ; Stuck at GND                      ;
++---------+-------+----------+-----------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "status_display:display|char2seg:d1" ;
++---------+-------+----------+-----------------------------------+
+; Port    ; Type  ; Severity ; Details                           ;
++---------+-------+----------+-----------------------------------+
+; char[7] ; Input ; Info     ; Stuck at GND                      ;
++---------+-------+----------+-----------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "status_display:display|char2seg:d0" ;
++---------+-------+----------+-----------------------------------+
+; Port    ; Type  ; Severity ; Details                           ;
++---------+-------+----------+-----------------------------------+
+; char[7] ; Input ; Info     ; Stuck at GND                      ;
++---------+-------+----------+-----------------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "tx_packet:tx"             ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; res_flags[7..2]    ; Input ; Info     ; Stuck at GND ;
+; id_baud_code[1..0] ; Input ; Info     ; Stuck at VCC ;
+; id_baud_code[7..2] ; Input ; Info     ; Stuck at GND ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------------------------+
+; Port Connectivity Checks: "async_receiver:uart_rx|BaudTickGen:tickgen" ;
++--------+-------+----------+--------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                    ;
++--------+-------+----------+--------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                               ;
++--------+-------+----------+--------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "async_receiver:uart_rx"           ;
++-----------------+--------+----------+------------------------+
+; Port            ; Type   ; Severity ; Details                ;
++-----------------+--------+----------+------------------------+
+; RxD_idle        ; Output ; Info     ; Explicitly unconnected ;
+; RxD_endofpacket ; Output ; Info     ; Explicitly unconnected ;
++-----------------+--------+----------+------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 63                          ;
+; cycloneiii_ff         ; 819                         ;
+;     ENA               ; 502                         ;
+;     ENA SCLR          ; 66                          ;
+;     ENA SLD           ; 80                          ;
+;     SCLR              ; 40                          ;
+;     SCLR SLD          ; 5                           ;
+;     SLD               ; 14                          ;
+;     plain             ; 112                         ;
+; cycloneiii_lcell_comb ; 2246                        ;
+;     arith             ; 758                         ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 255                         ;
+;         3 data inputs ; 501                         ;
+;     normal            ; 1488                        ;
+;         0 data inputs ; 14                          ;
+;         1 data inputs ; 51                          ;
+;         2 data inputs ; 153                         ;
+;         3 data inputs ; 383                         ;
+;         4 data inputs ; 887                         ;
+; cycloneiii_mac_mult   ; 1                           ;
+; cycloneiii_mac_out    ; 1                           ;
+; cycloneiii_ram_block  ; 63                          ;
+;                       ;                             ;
+; Max LUT depth         ; 19.80                       ;
+; Average LUT depth     ; 7.94                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:05     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Tue Nov 10 10:57:24 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off nn_number_recognition -c nn_number_recognition
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/de10lite_top.v
+    Info (12023): Found entity 1: de10lite_top File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/rx_parser.v
+    Info (12023): Found entity 1: rx_parser File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/rx_parser.v Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/frame_buffer.v
+    Info (12023): Found entity 1: frame_buffer File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/frame_buffer.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/weight_loader.v
+    Info (12023): Found entity 1: weight_loader File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/weight_loader.v Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/tx_packet.v
+    Info (12023): Found entity 1: tx_packet File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/tx_packet.v Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/status_display.v
+    Info (12023): Found entity 1: status_display File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/status_display.v Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/nn/nn_core_mlp_784_32_10.v
+    Info (12023): Found entity 1: nn_core_mlp_784_32_10 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 52
+Info (12021): Found 4 design units, including 4 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/uart/async_transmitter.v
+    Info (12023): Found entity 1: async_transmitter File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v Line: 13
+    Info (12023): Found entity 2: async_receiver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v Line: 74
+    Info (12023): Found entity 3: ASSERTION_ERROR File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v Line: 179
+    Info (12023): Found entity 4: BaudTickGen File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v Line: 184
+Info (12021): Found 1 design units, including 1 entities, in source file /users/jddow/onedrive/documents/github/ence_3100_jefferson_downes_2026/week 10/nn_number_recognition_student/verilog/seg7/char2seg.v
+    Info (12023): Found entity 1: char2seg File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/seg7/char2seg.v Line: 9
+Info (12127): Elaborating entity "de10lite_top" for the top level hierarchy
+Info (12128): Elaborating entity "async_receiver" for hierarchy "async_receiver:uart_rx" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 60
+Info (12128): Elaborating entity "BaudTickGen" for hierarchy "async_receiver:uart_rx|BaudTickGen:tickgen" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v Line: 108
+Info (12128): Elaborating entity "async_transmitter" for hierarchy "async_transmitter:uart_tx" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 64
+Info (12128): Elaborating entity "BaudTickGen" for hierarchy "async_transmitter:uart_tx|BaudTickGen:tickgen" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/uart/async_transmitter.v Line: 36
+Info (12128): Elaborating entity "rx_parser" for hierarchy "rx_parser:parser" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 86
+Info (12128): Elaborating entity "nn_core_mlp_784_32_10" for hierarchy "nn_core_mlp_784_32_10:core.nn" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 113
+Warning (10230): Verilog HDL assignment warning at nn_core_mlp_784_32_10.v(88): truncated value with size 32 to match size of target (15) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 88
+Warning (10230): Verilog HDL assignment warning at nn_core_mlp_784_32_10.v(89): truncated value with size 32 to match size of target (15) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 89
+Warning (10230): Verilog HDL assignment warning at nn_core_mlp_784_32_10.v(90): truncated value with size 32 to match size of target (15) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 90
+Warning (10230): Verilog HDL assignment warning at nn_core_mlp_784_32_10.v(91): truncated value with size 32 to match size of target (15) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 91
+Info (12128): Elaborating entity "weight_loader" for hierarchy "weight_loader:loader" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 135
+Warning (10230): Verilog HDL assignment warning at weight_loader.v(68): truncated value with size 9 to match size of target (8) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/weight_loader.v Line: 68
+Warning (10230): Verilog HDL assignment warning at weight_loader.v(70): truncated value with size 9 to match size of target (8) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/weight_loader.v Line: 70
+Info (10264): Verilog HDL Case Statement information at weight_loader.v(114): all case item expressions in this case statement are onehot File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/weight_loader.v Line: 114
+Info (12128): Elaborating entity "frame_buffer" for hierarchy "frame_buffer:fbuf" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 152
+Info (12128): Elaborating entity "tx_packet" for hierarchy "tx_packet:tx" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 181
+Info (10264): Verilog HDL Case Statement information at tx_packet.v(83): all case item expressions in this case statement are onehot File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/tx_packet.v Line: 83
+Warning (10230): Verilog HDL assignment warning at tx_packet.v(122): truncated value with size 9 to match size of target (8) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/tx_packet.v Line: 122
+Warning (10230): Verilog HDL assignment warning at tx_packet.v(124): truncated value with size 9 to match size of target (8) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/tx_packet.v Line: 124
+Info (12128): Elaborating entity "status_display" for hierarchy "status_display:display" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 194
+Warning (10230): Verilog HDL assignment warning at status_display.v(51): truncated value with size 32 to match size of target (28) File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/status_display.v Line: 51
+Info (12128): Elaborating entity "char2seg" for hierarchy "status_display:display|char2seg:d0" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/status_display.v Line: 115
+Warning (276020): Inferred RAM node "nn_core_mlp_784_32_10:core.nn|scores_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "nn_core_mlp_784_32_10:core.nn|hid_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "tx_packet:tx|r_score" is uninferred due to asynchronous read logic File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/tx_packet.v Line: 61
+Info (19000): Inferred 4 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "nn_core_mlp_784_32_10:core.nn|scores_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 4
+        Info (286033): Parameter NUMWORDS_A set to 10
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 4
+        Info (286033): Parameter NUMWORDS_B set to 10
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "nn_core_mlp_784_32_10:core.nn|wmem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 15
+        Info (286033): Parameter NUMWORDS_A set to 25496
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 15
+        Info (286033): Parameter NUMWORDS_B set to 25496
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "nn_core_mlp_784_32_10:core.nn|hid_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "frame_buffer:fbuf|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 7
+        Info (286033): Parameter WIDTHAD_A set to 11
+        Info (286033): Parameter NUMWORDS_A set to 2048
+        Info (286033): Parameter WIDTH_B set to 7
+        Info (286033): Parameter WIDTHAD_B set to 11
+        Info (286033): Parameter NUMWORDS_B set to 2048
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "nn_core_mlp_784_32_10:core.nn|Mult0" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 158
+Info (12130): Elaborated megafunction instantiation "nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0"
+Info (12133): Instantiated megafunction "nn_core_mlp_784_32_10:core.nn|altsyncram:scores_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "4"
+    Info (12134): Parameter "NUMWORDS_A" = "10"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "4"
+    Info (12134): Parameter "NUMWORDS_B" = "10"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6nb1.tdf
+    Info (12023): Found entity 1: altsyncram_6nb1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_6nb1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0"
+Info (12133): Instantiated megafunction "nn_core_mlp_784_32_10:core.nn|altsyncram:wmem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "15"
+    Info (12134): Parameter "NUMWORDS_A" = "25496"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "15"
+    Info (12134): Parameter "NUMWORDS_B" = "25496"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_mhg1.tdf
+    Info (12023): Found entity 1: altsyncram_mhg1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_mhg1.tdf Line: 32
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_c7a.tdf
+    Info (12023): Found entity 1: decode_c7a File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/decode_c7a.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_s1b.tdf
+    Info (12023): Found entity 1: mux_s1b File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/mux_s1b.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0"
+Info (12133): Instantiated megafunction "nn_core_mlp_784_32_10:core.nn|altsyncram:hid_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_hjh1.tdf
+    Info (12023): Found entity 1: altsyncram_hjh1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_hjh1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "frame_buffer:fbuf|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "frame_buffer:fbuf|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "7"
+    Info (12134): Parameter "WIDTHAD_A" = "11"
+    Info (12134): Parameter "NUMWORDS_A" = "2048"
+    Info (12134): Parameter "WIDTH_B" = "7"
+    Info (12134): Parameter "WIDTHAD_B" = "11"
+    Info (12134): Parameter "NUMWORDS_B" = "2048"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kdg1.tdf
+    Info (12023): Found entity 1: altsyncram_kdg1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/altsyncram_kdg1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 158
+Info (12133): Instantiated megafunction "nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0" with the following parameter: File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/nn/nn_core_mlp_784_32_10.v Line: 158
+    Info (12134): Parameter "LPM_WIDTHA" = "9"
+    Info (12134): Parameter "LPM_WIDTHB" = "8"
+    Info (12134): Parameter "LPM_WIDTHP" = "17"
+    Info (12134): Parameter "LPM_WIDTHR" = "17"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_vds.tdf
+    Info (12023): Found entity 1: mult_vds File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/quartus/db/mult_vds.tdf Line: 29
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 30
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 31
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 32
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 33
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 34
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 34
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 34
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 34
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 34
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 34
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 35
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 35
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 35
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 15 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Week 10/NN_Number_Recognition_student/verilog/de10lite_top.v Line: 28
+Info (21057): Implemented 2764 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 59 output pins
+    Info (21061): Implemented 2637 logic cells
+    Info (21064): Implemented 63 RAM segments
+    Info (21062): Implemented 1 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4901 megabytes
+    Info: Processing ended: Tue Nov 10 10:57:37 2026
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:22
+
+

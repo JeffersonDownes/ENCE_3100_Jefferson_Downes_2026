@@ -7,7 +7,7 @@ Note: if both Questa Intel FPGA Edition and ModelSim executables are available, 
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off main -c main --vector_source="C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/part3.vwf" --testbench_file="C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/part3.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off main -c main --vector_source="C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/part2.vwf" --testbench_file="C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/part2.vwf.vt"
 
 TBBmalloc: skip allocation functions replacement in ucrtbase.dll: unknown prologue for function _msize
 
@@ -28,8 +28,8 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Altera and sold by Altera or its authorized distributors.  Please
     Info: refer to the Altera Software License Subscription Agreements 
     Info: on the Quartus Prime software download page.
-    Info: Processing started: Fri Nov 13 14:04:47 2026
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off main -c main --vector_source=C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/part3.vwf --testbench_file=C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/part3.vwf.vt
+    Info: Processing started: Sun Nov 15 14:22:46 2026
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off main -c main --vector_source=C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/part2.vwf --testbench_file=C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/part2.vwf.vt
 Info (119006): Selected device 10M50DAF484C7G for design "main"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
@@ -60,16 +60,16 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Altera and sold by Altera or its authorized distributors.  Please
     Info: refer to the Altera Software License Subscription Agreements 
     Info: on the Quartus Prime software download page.
-    Info: Processing started: Fri Nov 13 14:04:48 2026
+    Info: Processing started: Sun Nov 15 14:22:47 2026
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/ main -c main
 Info (119006): Selected device 10M50DAF484C7G for design "main"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file main.vo in folder "C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4676 megabytes
-    Info: Processing ended: Fri Nov 13 14:04:48 2026
+    Info: Processing ended: Sun Nov 15 14:22:47 2026
     Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 Completed successfully. 
 
@@ -96,35 +96,37 @@ Reading pref.tcl
 
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
 
-# Start time: 14:04:51 on Nov 13,2026
+# Start time: 14:22:49 on Nov 15,2026
 # vlog -work work main.vo 
 # ** Note: (vlog-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 
-# -- Compiling module array_multiplier_4bit
+# -- Compiling module accumulator_8bit
 
 # 
 # Top level modules:
-# 	array_multiplier_4bit
-# End time: 14:04:51 on Nov 13,2026, Elapsed time: 0:00:00
+
+# 	accumulator_8bit
+
+# End time: 14:22:49 on Nov 15,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
 
-# Start time: 14:04:51 on Nov 13,2026
-# vlog -work work part3.vwf.vt 
+# Start time: 14:22:49 on Nov 15,2026
+# vlog -work work part2.vwf.vt 
 # ** Note: (vlog-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 
-# -- Compiling module array_multiplier_4bit_vlg_vec_tst
+# -- Compiling module accumulator_8bit_vlg_vec_tst
 # 
 # Top level modules:
-# 	array_multiplier_4bit_vlg_vec_tst
-# End time: 14:04:51 on Nov 13,2026, Elapsed time: 0:00:00
+# 	accumulator_8bit_vlg_vec_tst
+# End time: 14:22:49 on Nov 15,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # ** Note: (vsim-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
-# vsim -voptargs="+acc" -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.array_multiplier_4bit_vlg_vec_tst 
-# Start time: 14:04:52 on Nov 13,2026
-# ** Note: (vsim-3812) Design is being optimized...
+# vsim -voptargs="+acc" -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.accumulator_8bit_vlg_vec_tst 
+# Start time: 14:22:49 on Nov 15,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
 # ** Note: (vopt-220) 'c:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
@@ -143,42 +145,36 @@ Reading pref.tcl
 # // and may not be used in any way not expressly authorized by SISW.
 # //
 
-# Loading work.array_multiplier_4bit_vlg_vec_tst(fast)
-# Loading work.array_multiplier_4bit(fast)
+# Loading work.accumulator_8bit_vlg_vec_tst(fast)
+# Loading work.accumulator_8bit(fast)
 # Loading fiftyfivenm_ver.fiftyfivenm_io_obuf(fast)
 # Loading fiftyfivenm_ver.fiftyfivenm_io_ibuf(fast)
+# Loading altera_ver.dffeas(fast)
 # Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast)
 # Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__1)
 # Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__2)
 # Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__3)
 # Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__4)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__5)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__6)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__7)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__8)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__9)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__10)
-# Loading fiftyfivenm_ver.fiftyfivenm_lcell_comb(fast__11)
 
 # after#28
 
-# ** Note: $finish    : part3.vwf.vt(47)
-#    Time: 80 ns  Iteration: 0  Instance: /array_multiplier_4bit_vlg_vec_tst
+# ** Note: $finish    : part2.vwf.vt(53)
+#    Time: 200 ns  Iteration: 0  Instance: /accumulator_8bit_vlg_vec_tst
 
-# End time: 14:04:54 on Nov 13,2026, Elapsed time: 0:00:02
+# End time: 14:22:51 on Nov 15,2026, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 1
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/part3.vwf...
+Reading C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/part2.vwf...
 
 Reading C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/main.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/main_20261113140454.sim.vwf
+Writing the resulting VWF to C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim/main_20261115142251.sim.vwf
 
 Finished VCD to VWF conversion.
 

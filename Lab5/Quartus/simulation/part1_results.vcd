@@ -1,0 +1,406 @@
+$comment
+	File created using the following command:
+		vcd file main.msim.vcd -direction
+$end
+$date
+	Sun Nov 15 14:21:22 2026
+$end
+$version
+	Questa Altera Starter FPGA Edition Version 2025.2
+$end
+$timescale
+	1ps
+$end
+
+$scope module accumulator_8bit_vlg_vec_tst $end
+$var reg 8 ! A [7:0] $end
+$var reg 1 " Clk $end
+$var reg 1 # Reset_n $end
+$var reg 1 $ add_sub $end
+$var wire 1 % Overflow $end
+$var wire 1 & S [7] $end
+$var wire 1 ' S [6] $end
+$var wire 1 ( S [5] $end
+$var wire 1 ) S [4] $end
+$var wire 1 * S [3] $end
+$var wire 1 + S [2] $end
+$var wire 1 , S [1] $end
+$var wire 1 - S [0] $end
+
+$scope module i1 $end
+$var wire 1 . gnd $end
+$var wire 1 / vcc $end
+$var wire 1 0 unknown $end
+$var tri1 1 1 devclrn $end
+$var tri1 1 2 devpor $end
+$var tri1 1 3 devoe $end
+$var wire 1 4 S[0]~output_o $end
+$var wire 1 5 S[1]~output_o $end
+$var wire 1 6 S[2]~output_o $end
+$var wire 1 7 S[3]~output_o $end
+$var wire 1 8 S[4]~output_o $end
+$var wire 1 9 S[5]~output_o $end
+$var wire 1 : S[6]~output_o $end
+$var wire 1 ; S[7]~output_o $end
+$var wire 1 < Overflow~output_o $end
+$var wire 1 = Clk~input_o $end
+$var wire 1 > A[0]~input_o $end
+$var wire 1 ? Reset_n~input_o $end
+$var wire 1 @ add_sub~input_o $end
+$var wire 1 A Add0~0_combout $end
+$var wire 1 B S[0]~9_cout $end
+$var wire 1 C S[0]~10_combout $end
+$var wire 1 D S[0]~reg0_q $end
+$var wire 1 E A[1]~input_o $end
+$var wire 1 F Add0~1_combout $end
+$var wire 1 G S[0]~11 $end
+$var wire 1 H S[1]~12_combout $end
+$var wire 1 I S[1]~reg0_q $end
+$var wire 1 J A[2]~input_o $end
+$var wire 1 K Add0~2_combout $end
+$var wire 1 L S[1]~13 $end
+$var wire 1 M S[2]~14_combout $end
+$var wire 1 N S[2]~reg0_q $end
+$var wire 1 O A[3]~input_o $end
+$var wire 1 P Add0~3_combout $end
+$var wire 1 Q S[2]~15 $end
+$var wire 1 R S[3]~16_combout $end
+$var wire 1 S S[3]~reg0_q $end
+$var wire 1 T A[4]~input_o $end
+$var wire 1 U Add0~4_combout $end
+$var wire 1 V S[3]~17 $end
+$var wire 1 W S[4]~18_combout $end
+$var wire 1 X S[4]~reg0_q $end
+$var wire 1 Y A[5]~input_o $end
+$var wire 1 Z Add0~5_combout $end
+$var wire 1 [ S[4]~19 $end
+$var wire 1 \ S[5]~20_combout $end
+$var wire 1 ] S[5]~reg0_q $end
+$var wire 1 ^ A[6]~input_o $end
+$var wire 1 _ Add0~6_combout $end
+$var wire 1 ` S[5]~21 $end
+$var wire 1 a S[6]~22_combout $end
+$var wire 1 b S[6]~reg0_q $end
+$var wire 1 c A[7]~input_o $end
+$var wire 1 d Add0~7_combout $end
+$var wire 1 e S[6]~23 $end
+$var wire 1 f S[7]~24_combout $end
+$var wire 1 g S[7]~reg0_q $end
+$var wire 1 h S[7]~25 $end
+$var wire 1 i Overflow~1_combout $end
+$var wire 1 j Overflow~reg0_q $end
+$var wire 1 k A_stored [7] $end
+$var wire 1 l A_stored [6] $end
+$var wire 1 m A_stored [5] $end
+$var wire 1 n A_stored [4] $end
+$var wire 1 o A_stored [3] $end
+$var wire 1 p A_stored [2] $end
+$var wire 1 q A_stored [1] $end
+$var wire 1 r A_stored [0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b101 !
+0"
+0#
+0$
+0%
+0-
+0,
+0+
+0*
+0)
+0(
+0'
+0&
+0.
+1/
+x0
+11
+12
+13
+04
+05
+06
+07
+08
+09
+0:
+0;
+0<
+0=
+1>
+0?
+0@
+0A
+0B
+0C
+0D
+0E
+0F
+1G
+0H
+0I
+1J
+0K
+0L
+0M
+0N
+0O
+0P
+1Q
+0R
+0S
+0T
+0U
+0V
+0W
+0X
+0Y
+0Z
+1[
+0\
+0]
+0^
+0_
+0`
+0a
+0b
+0c
+0d
+1e
+0f
+0g
+0h
+0i
+0j
+0r
+0q
+0p
+0o
+0n
+0m
+0l
+0k
+$end
+#5000
+1#
+1?
+#10000
+1"
+1=
+1p
+1r
+1K
+1A
+1M
+1C
+#20000
+0"
+0=
+#30000
+1"
+1=
+1N
+1D
+16
+14
+1-
+1+
+0Q
+0M
+0G
+0C
+1R
+1H
+#40000
+b10000101 !
+b11000101 !
+b11100101 !
+b11110101 !
+b11111101 !
+b11111111 !
+0"
+0=
+1c
+1^
+1Y
+1T
+1O
+1E
+#50000
+1"
+1=
+1k
+1l
+1m
+1n
+1o
+1q
+1S
+0N
+1I
+0D
+17
+06
+15
+04
+0-
+1,
+0+
+1*
+1d
+1_
+1Z
+1U
+1P
+1F
+1V
+0R
+1Q
+1M
+1L
+0H
+1G
+1C
+1f
+1a
+1\
+0[
+0Q
+0M
+1`
+0\
+1R
+0e
+0a
+1h
+0f
+1i
+#60000
+b11111011 !
+b1111011 !
+b111011 !
+b11011 !
+b1011 !
+b11 !
+b1 !
+0"
+0=
+0c
+0^
+0Y
+0T
+0O
+0J
+0E
+#70000
+1"
+1=
+0k
+0l
+0m
+0n
+0o
+0p
+0q
+1j
+0I
+1D
+1<
+05
+14
+1-
+0,
+1%
+0d
+0_
+0Z
+0U
+0P
+0K
+0F
+0L
+1H
+0G
+0C
+0h
+1f
+1e
+1a
+0`
+1\
+1[
+1W
+0R
+1Q
+0i
+0f
+0a
+0\
+0V
+1R
+0W
+#80000
+b0 !
+0"
+0=
+0>
+#90000
+1"
+1=
+0r
+0j
+1I
+0D
+0<
+15
+04
+0-
+1,
+0%
+0A
+1L
+0H
+1G
+1C
+0C
+1M
+0L
+1H
+0M
+#100000
+0"
+0=
+#110000
+1"
+1=
+#120000
+0"
+0=
+#130000
+1"
+1=
+#135000
+0#
+0?
+0I
+0S
+05
+07
+0*
+0,
+0H
+0R
+#140000
+0"
+0=
+#145000
+1#
+1?
+#150000
+1"
+1=
+#160000

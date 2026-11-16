@@ -1,10 +1,14 @@
 m255
 K4
 z2
-!s12c _opt1
-Z0 !s99 nomlopt
-!s12c _opt
+Z0 !s12c _opt2
+Z1 !s99 nomlopt
 R0
+R1
+!s12c _opt1
+R1
+!s12c _opt
+R1
 !s11f vlog 2025.2 2025.05, May 31 2025
 13
 !s112 1.1
@@ -12,7 +16,7 @@ R0
 !i10e 25
 !i10f 100
 cModel Technology
-Z1 dC:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim
+Z2 dC:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab5/Quartus/simulation/qsim
 T_opt
 !i145 1
 !i144 0
@@ -20,16 +24,16 @@ T_opt
 V6ZoPXOaaMMbzFLClnLTiW2
 04 38 4 work registered_multiplier_8bit_vlg_vec_tst fast 0
 =1-346f247ea52b-6af6755d-4f-7ce4
-R0
-Z2 !s12f OEM100
-Z3 !s12b OEM100
-Z4 !s124 OEM10U2 
-Z5 !s135 nogc
-Z6 o-quiet -auto_acc_if_foreign -work work -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver +acc
-Z7 tCvgOpt 0 defaultOptions 1107585188
-n@_opt
-Z8 OL;O;2025.2;82
 R1
+Z3 !s12f OEM100
+Z4 !s12b OEM100
+Z5 !s124 OEM10U2 
+Z6 !s135 nogc
+Z7 o-quiet -auto_acc_if_foreign -work work -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver +acc
+Z8 tCvgOpt 0 defaultOptions 1107585188
+n@_opt
+Z9 OL;O;2025.2;82
+R2
 T_opt1
 !i145 1
 !i144 0
@@ -37,46 +41,109 @@ T_opt1
 V@:c5LgRQ99R0iiU65^HN=2
 04 33 4 work array_multiplier_4bit_vlg_vec_tst fast 0
 =1-346f247ea52b-6af77b74-1ea-4490
-R0
-R2
+R1
 R3
 R4
 R5
 R6
 R7
-n@_opt1
 R8
-varray_multiplier_4bit
-Z9 2main.vo
-Z10 !s110 1794603891
-!i10b 1
-!s100 H_N2W1DK7<Y]PehaiVg0D2
-Ic`U1MJJ<I4=ca4lm?^NE92
+n@_opt1
+R9
+R2
+T_opt2
+!i145 1
+!i144 0
+!s110 1794777770
+VDo<LlnzmRN?KlJQfi^1eC0
+04 28 4 work accumulator_8bit_vlg_vec_tst fast 0
+=1-346f247ea52b-6afa22aa-56-273c
 R1
-Z11 w1794603888
+R3
+R4
+R5
+R6
+R7
+R8
+n@_opt2
+R9
+vaccumulator_8bit
+Z10 2main.vo
+Z11 !s110 1794777769
+!i10b 1
+!s100 H7@JFY246ODNJChz0oYH53
+I`f7RAB1coPH[^<ifkh:773
+R2
+w1794777767
 Z12 8main.vo
 Z13 Fmain.vo
-!i122 6
-L0 32 761
+!i122 10
+L0 32 933
 Z14 VDg1SIo80bB@j0V0VzS_@n1
 Z15 OL;L;2025.2;82
 r1
 !s85 0
 31
-Z16 !s108 1794603891.000000
+Z16 !s108 1794777769.000000
 Z17 !s107 main.vo|
 Z18 !s90 -work|work|main.vo|
 !i113 0
 Z19 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 Z20 tCvgOpt 0 defaultOptions 1085333592
+vaccumulator_8bit_vlg_vec_tst
+2part2.vwf.vt
+R11
+!i10b 1
+!s100 Q][UGlKk=k3LbHz9N:mIU1
+IHo[WW7aW[L8d;?lHMQf4m1
+R2
+w1794777766
+8part2.vwf.vt
+Fpart2.vwf.vt
+!i122 11
+L0 30 116
+R14
+R15
+r1
+!s85 0
+31
+R16
+!s107 part2.vwf.vt|
+!s90 -work|work|part2.vwf.vt|
+!i113 0
+R19
+R20
+varray_multiplier_4bit
+R10
+Z21 !s110 1794603891
+!i10b 1
+!s100 H_N2W1DK7<Y]PehaiVg0D2
+Ic`U1MJJ<I4=ca4lm?^NE92
+R2
+Z22 w1794603888
+R12
+R13
+!i122 6
+L0 32 761
+R14
+R15
+r1
+!s85 0
+31
+Z23 !s108 1794603891.000000
+R17
+R18
+!i113 0
+R19
+R20
 varray_multiplier_4bit_vlg_vec_tst
 2part3.vwf.vt
-R10
+R21
 !i10b 1
 !s100 `O;nmR1eR3@NP7^3Q`i:_2
 IPFj1aTVDi7hd`VXo<P7X51
-R1
-R11
+R2
+R22
 8part3.vwf.vt
 Fpart3.vwf.vt
 !i122 7
@@ -86,19 +153,19 @@ R15
 r1
 !s85 0
 31
-R16
+R23
 !s107 part3.vwf.vt|
 !s90 -work|work|part3.vwf.vt|
 !i113 0
 R19
 R20
 vregistered_multiplier_8bit
-R9
-Z21 !s110 1794599541
+R10
+Z24 !s110 1794599541
 !i10b 1
 !s100 Ql^GWX^Y@_TD2gao;5KTY3
 I3oB^8nA6UN2[;[kIHn5^n2
-R1
+R2
 w1794599538
 R12
 R13
@@ -109,7 +176,7 @@ R15
 r1
 !s85 0
 31
-Z22 !s108 1794599541.000000
+Z25 !s108 1794599541.000000
 R17
 R18
 !i113 0
@@ -117,11 +184,11 @@ R19
 R20
 vregistered_multiplier_8bit_vlg_vec_tst
 2part4.vwf.vt
-R21
+R24
 !i10b 1
 !s100 mHm79:hDI]czUL;<H5<<R1
 IM9W3^Xz:=z;n71`nH:A4m2
-R1
+R2
 w1794599537
 8part4.vwf.vt
 Fpart4.vwf.vt
@@ -132,7 +199,7 @@ R15
 r1
 !s85 0
 31
-R22
+R25
 !s107 part4.vwf.vt|
 !s90 -work|work|part4.vwf.vt|
 !i113 0

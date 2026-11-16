@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Tue Nov 10 10:57:37 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : nn_number_recognition
+Top-level Entity Name : de10lite_top
+Family : MAX 10
+Total logic elements : 2,550
+    Total combinational functions : 2,216
+    Dedicated logic registers : 819
+Total registers : 819
+Total pins : 63
+Total virtual pins : 0
+Total memory bits : 218,720
+Embedded Multiplier 9-bit elements : 1
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

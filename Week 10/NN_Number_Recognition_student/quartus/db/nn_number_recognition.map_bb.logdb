@@ -1,0 +1,2 @@
+v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,nn_core_mlp_784_32_10:core.nn|lpm_mult:Mult0|mult_vds:auto_generated|mac_out2,

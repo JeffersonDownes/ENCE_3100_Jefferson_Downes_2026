@@ -1,0 +1,14 @@
+module LEDArray(
+	input[7:0] SW,
+	output [7:0] LED
+);
+
+	genvar i;
+	 
+	generate
+		for (i = 0; i < 8; i = i + 1) begin: gen_led
+			assign LED[i] = SW[i];
+		end
+	endgenerate
+	
+endmodule

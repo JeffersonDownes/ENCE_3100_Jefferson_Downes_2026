@@ -1,0 +1,33 @@
+
+`default_nettype none
+
+module Accumulator_A #
+(
+	parameter N = 4
+)
+(
+	input wire MainClock,
+	input wire ClearA,
+	input wire LatchA,
+	input wire EnableA,
+	input wire [N-1:0] A,
+	output wire [N-1:0] IB_BUS,
+	output reg [N-1:0] AluA
+);
+
+	// Clear or load on the rising edge; otherwise keep the stored value.
+	always @(posedge MainClock) begin
+		if(ClearA)
+			AluA <= {N{1'b0}};
+		else begin
+			if(LatchA)
+				AluA <= A;
+		end
+	end
+	
+	// Release the shared bus (z) when this accumulator is disabled.
+	assign IB_BUS = (EnableA) ? AluA : {N{1'bz}};
+
+endmodule
+
+`default_nettype wire

@@ -6,7 +6,7 @@ module gated_rs_latch(
 );
 
 
-	wire R_g, S_g, Qa, Qb;
+	wire R_g, S_g, Qa, Qb /* synthesis keep */;
 
 	and (R_g, R, Clk);  
 	and (S_g, S, Clk);   
