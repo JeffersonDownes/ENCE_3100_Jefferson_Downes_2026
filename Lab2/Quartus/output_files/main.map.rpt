@@ -1,5 +1,5 @@
 Analysis & Synthesis report for main
-Wed Sep 16 15:03:53 2026
+Tue Nov 17 20:12:23 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -14,10 +14,10 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Port Connectivity Checks: "mux_2_1:M3"
- 10. Port Connectivity Checks: "mux_2_1:M2"
- 11. Port Connectivity Checks: "mux_2_1:M1"
- 12. Port Connectivity Checks: "mux_2_1:M0"
+  9. Inverted Register Statistics
+ 10. Port Connectivity Checks: "BCD_Adder_2:p5_adder|BCD_Adder_1:tens"
+ 11. Port Connectivity Checks: "BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:decimal_correction"
+ 12. Port Connectivity Checks: "BCD_Adder_2:p5_adder|BCD_Adder_1:units"
  13. Post-Synthesis Netlist Statistics for Top Partition
  14. Elapsed Time Per Partition
  15. Analysis & Synthesis Messages
@@ -47,16 +47,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep 16 15:03:53 2026           ;
+; Analysis & Synthesis Status        ; Successful - Tue Nov 17 20:12:23 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; main                                            ;
 ; Top-level Entity Name              ; main                                            ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 7                                               ;
-;     Total combinational functions  ; 7                                               ;
-;     Dedicated logic registers      ; 0                                               ;
-; Total registers                    ; 0                                               ;
-; Total pins                         ; 69                                              ;
+; Total logic elements               ; 116                                             ;
+;     Total combinational functions  ; 96                                              ;
+;     Dedicated logic registers      ; 22                                              ;
+; Total registers                    ; 22                                              ;
+; Total pins                         ; 71                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -161,22 +161,28 @@ on the Quartus Prime software download page.
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                         ; Library ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
-; main.v                           ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v         ;         ;
-; mux_2_1.v                        ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/mux_2_1.v      ;         ;
-; Seg7_Decoder.v                   ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Seg7_Decoder.v ;         ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                           ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                             ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------------+---------+
+; main.v                           ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v             ;         ;
+; Seg7_Decoder.v                   ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Seg7_Decoder.v     ;         ;
+; mux_2_1.v                        ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/mux_2_1.v          ;         ;
+; Full_Adder.v                     ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Full_Adder.v       ;         ;
+; Ripple_Adder_4.v                 ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Ripple_Adder_4.v   ;         ;
+; BCD_Adder_1.v                    ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_1.v      ;         ;
+; BCD_Adder_2.v                    ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_2.v      ;         ;
+; Switch_Registers.v               ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Switch_Registers.v ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -184,41 +190,73 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 7           ;
+; Estimated Total logic elements              ; 116         ;
 ;                                             ;             ;
-; Total combinational functions               ; 7           ;
+; Total combinational functions               ; 96          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 4           ;
-;     -- 3 input functions                    ; 3           ;
-;     -- <=2 input functions                  ; 0           ;
+;     -- 4 input functions                    ; 62          ;
+;     -- 3 input functions                    ; 19          ;
+;     -- <=2 input functions                  ; 15          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 7           ;
+;     -- normal mode                          ; 96          ;
 ;     -- arithmetic mode                      ; 0           ;
 ;                                             ;             ;
-; Total registers                             ; 0           ;
-;     -- Dedicated logic registers            ; 0           ;
+; Total registers                             ; 22          ;
+;     -- Dedicated logic registers            ; 22          ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
-; I/O pins                                    ; 69          ;
+; I/O pins                                    ; 71          ;
 ;                                             ;             ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
-; Maximum fan-out node                        ; SW[1]~input ;
-; Maximum fan-out                             ; 7           ;
-; Total fan-out                               ; 101         ;
-; Average fan-out                             ; 0.70        ;
+; Maximum fan-out node                        ; SW[9]~input ;
+; Maximum fan-out                             ; 39          ;
+; Total fan-out                               ; 516         ;
+; Average fan-out                             ; 1.98        ;
 +---------------------------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                   ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------+--------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name   ; Entity Name  ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------+--------------+--------------+
-; |main                      ; 7 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 69   ; 0            ; 0          ; |main                 ; main         ; work         ;
-;    |Seg7_Decoder:D0|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:D0 ; Seg7_Decoder ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------+--------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                  ;
++----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                            ; Entity Name      ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------+------------------+--------------+
+; |main                                        ; 96 (55)             ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |main                                                                                                          ; main             ; work         ;
+;    |BCD_Adder_2:p5_adder|                    ; 26 (5)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder                                                                                     ; BCD_Adder_2      ; work         ;
+;       |BCD_Adder_1:tens|                     ; 11 (1)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens                                                                    ; BCD_Adder_1      ; work         ;
+;          |Ripple_Adder_4:binary_sum|         ; 6 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum                                          ; Ripple_Adder_4   ; work         ;
+;             |Full_Adder:fa0|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum|Full_Adder:fa0                           ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum|Full_Adder:fa0|mux_2_1:carry_mux         ; mux_2_1          ; work         ;
+;             |Full_Adder:fa1|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum|Full_Adder:fa1                           ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum|Full_Adder:fa1|mux_2_1:carry_mux         ; mux_2_1          ; work         ;
+;             |Full_Adder:fa2|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum|Full_Adder:fa2                           ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:binary_sum|Full_Adder:fa2|mux_2_1:carry_mux         ; mux_2_1          ; work         ;
+;          |Ripple_Adder_4:decimal_correction| ; 4 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:decimal_correction                                  ; Ripple_Adder_4   ; work         ;
+;             |Full_Adder:fa1|                 ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:decimal_correction|Full_Adder:fa1                   ; Full_Adder       ; work         ;
+;             |Full_Adder:fa2|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:decimal_correction|Full_Adder:fa2                   ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:decimal_correction|Full_Adder:fa2|mux_2_1:carry_mux ; mux_2_1          ; work         ;
+;             |Full_Adder:fa3|                 ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:tens|Ripple_Adder_4:decimal_correction|Full_Adder:fa3                   ; Full_Adder       ; work         ;
+;       |BCD_Adder_1:units|                    ; 10 (1)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units                                                                   ; BCD_Adder_1      ; work         ;
+;          |Ripple_Adder_4:binary_sum|         ; 7 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum                                         ; Ripple_Adder_4   ; work         ;
+;             |Full_Adder:fa0|                 ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa0                          ; Full_Adder       ; work         ;
+;             |Full_Adder:fa1|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa1                          ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa1|mux_2_1:carry_mux        ; mux_2_1          ; work         ;
+;             |Full_Adder:fa2|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa2                          ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa2|mux_2_1:carry_mux        ; mux_2_1          ; work         ;
+;             |Full_Adder:fa3|                 ; 2 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa3                          ; Full_Adder       ; work         ;
+;                |mux_2_1:carry_mux|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa3|mux_2_1:carry_mux        ; mux_2_1          ; work         ;
+;          |Ripple_Adder_4:decimal_correction| ; 2 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:decimal_correction                                 ; Ripple_Adder_4   ; work         ;
+;             |Full_Adder:fa1|                 ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:decimal_correction|Full_Adder:fa1                  ; Full_Adder       ; work         ;
+;             |Full_Adder:fa2|                 ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:decimal_correction|Full_Adder:fa2                  ; Full_Adder       ; work         ;
+;    |Seg7_Decoder:p5_da0|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:p5_da0                                                                                      ; Seg7_Decoder     ; work         ;
+;    |Seg7_Decoder:p5_da1|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:p5_da1                                                                                      ; Seg7_Decoder     ; work         ;
+;    |Seg7_Decoder:p5_db0|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:p5_db0                                                                                      ; Seg7_Decoder     ; work         ;
+;    |Seg7_Decoder:p5_db1|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:p5_db1                                                                                      ; Seg7_Decoder     ; work         ;
+;    |Seg7_Decoder:p5_ds0|                     ; 4 (4)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:p5_ds0                                                                                      ; Seg7_Decoder     ; work         ;
+;    |Seg7_Decoder:p5_ds1|                     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Seg7_Decoder:p5_ds1                                                                                      ; Seg7_Decoder     ; work         ;
+;    |Switch_Registers:operand_registers|      ; 4 (4)               ; 22 (22)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Switch_Registers:operand_registers                                                                       ; Switch_Registers ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -227,54 +265,62 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 22    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mux_2_1:M3"                                                                         ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; y    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; m    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------------+
+; Inverted Register Statistics                                 ;
++----------------------------------------------------+---------+
+; Inverted Register                                  ; Fan out ;
++----------------------------------------------------+---------+
+; Switch_Registers:operand_registers|key_sync[0]     ; 2       ;
+; Switch_Registers:operand_registers|key_previous[0] ; 1       ;
+; Switch_Registers:operand_registers|key_sync[1]     ; 2       ;
+; Switch_Registers:operand_registers|key_previous[1] ; 1       ;
+; Switch_Registers:operand_registers|key_meta[0]     ; 1       ;
+; Switch_Registers:operand_registers|key_meta[1]     ; 1       ;
+; Total number of inverted registers = 6             ;         ;
++----------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "BCD_Adder_2:p5_adder|BCD_Adder_1:tens" ;
++-----------+--------+----------+-----------------------------------+
+; Port      ; Type   ; Severity ; Details                           ;
++-----------+--------+----------+-----------------------------------+
+; raw_sum   ; Output ; Info     ; Explicitly unconnected            ;
+; raw_carry ; Output ; Info     ; Explicitly unconnected            ;
++-----------+--------+----------+-----------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mux_2_1:M2"                                                                         ;
+; Port Connectivity Checks: "BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:decimal_correction"           ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
-; y    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; m    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; B[3] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; B[0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mux_2_1:M1"                                                                         ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; y    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; m    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mux_2_1:M0"                                                                         ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; y    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; m    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "BCD_Adder_2:p5_adder|BCD_Adder_1:units" ;
++-----------+--------+----------+------------------------------------+
+; Port      ; Type   ; Severity ; Details                            ;
++-----------+--------+----------+------------------------------------+
+; cin       ; Input  ; Info     ; Stuck at GND                       ;
+; raw_sum   ; Output ; Info     ; Explicitly unconnected             ;
+; raw_carry ; Output ; Info     ; Explicitly unconnected             ;
++-----------+--------+----------+------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -282,16 +328,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 69                          ;
-; cycloneiii_lcell_comb ; 11                          ;
-;     normal            ; 11                          ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 2                           ;
-;         3 data inputs ; 3                           ;
-;         4 data inputs ; 4                           ;
+; boundary_port         ; 71                          ;
+; cycloneiii_ff         ; 22                          ;
+;     ENA               ; 16                          ;
+;     plain             ; 6                           ;
+; cycloneiii_lcell_comb ; 103                         ;
+;     normal            ; 103                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 19                          ;
+;         4 data inputs ; 62                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 2.00                        ;
-; Average LUT depth     ; 1.40                        ;
+; Max LUT depth         ; 11.00                       ;
+; Average LUT depth     ; 4.98                        ;
 +-----------------------+-----------------------------+
 
 
@@ -310,310 +360,58 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Wed Sep 16 15:03:45 2026
+    Info: Processing started: Tue Nov 17 20:12:16 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off main -c main
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file main.v
     Info (12023): Found entity 1: main File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file mux_2_1.v
-    Info (12023): Found entity 1: mux_2_1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/mux_2_1.v Line: 1
-Warning (12019): Can't analyze file -- file mux_2_1_8b.v is missing
-Warning (12019): Can't analyze file -- file mux_2_1_3b.v is missing
-Warning (12019): Can't analyze file -- file mux_5_1_3b.v is missing
-Warning (12019): Can't analyze file -- file output_files/seven_segment.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file seg7_decoder.v
     Info (12023): Found entity 1: Seg7_Decoder File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Seg7_Decoder.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux_2_1.v
+    Info (12023): Found entity 1: mux_2_1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/mux_2_1.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file circuita.v
+    Info (12023): Found entity 1: CircuitA File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/CircuitA.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file circuitb.v
+    Info (12023): Found entity 1: CircuitB File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/CircuitB.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file binary4_bcd.v
+    Info (12023): Found entity 1: Binary4_BCD File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Binary4_BCD.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file full_adder.v
+    Info (12023): Found entity 1: Full_Adder File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Full_Adder.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file ripple_adder_4.v
+    Info (12023): Found entity 1: Ripple_Adder_4 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Ripple_Adder_4.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file bcd_adder_1.v
+    Info (12023): Found entity 1: BCD_Adder_1 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_1.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file bcd_adder_2.v
+    Info (12023): Found entity 1: BCD_Adder_2 File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_2.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file switch_registers.v
+    Info (12023): Found entity 1: Switch_Registers File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Switch_Registers.v Line: 5
 Info (12127): Elaborating entity "main" for the top level hierarchy
-Warning (10034): Output port "LEDR" at main.v(4) has no driver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-Warning (10034): Output port "HEX1" at main.v(8) has no driver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-Warning (10034): Output port "HEX2" at main.v(9) has no driver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-Warning (10034): Output port "HEX3" at main.v(10) has no driver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-Warning (10034): Output port "HEX4" at main.v(11) has no driver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-Warning (10034): Output port "HEX5" at main.v(13) has no driver File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-Info (12128): Elaborating entity "Seg7_Decoder" for hierarchy "Seg7_Decoder:D0" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 23
-Info (12128): Elaborating entity "mux_2_1" for hierarchy "mux_2_1:M0" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 33
+Info (12128): Elaborating entity "Switch_Registers" for hierarchy "Switch_Registers:operand_registers" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 12
+Info (12128): Elaborating entity "BCD_Adder_2" for hierarchy "BCD_Adder_2:p5_adder" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 76
+Info (12128): Elaborating entity "BCD_Adder_1" for hierarchy "BCD_Adder_2:p5_adder|BCD_Adder_1:units" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_2.v Line: 8
+Info (12128): Elaborating entity "Ripple_Adder_4" for hierarchy "BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/BCD_Adder_1.v Line: 11
+Info (12128): Elaborating entity "Full_Adder" for hierarchy "BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa0" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Ripple_Adder_4.v Line: 7
+Info (12128): Elaborating entity "mux_2_1" for hierarchy "BCD_Adder_2:p5_adder|BCD_Adder_1:units|Ripple_Adder_4:binary_sum|Full_Adder:fa0|mux_2_1:carry_mux" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/Full_Adder.v Line: 6
+Info (12128): Elaborating entity "Seg7_Decoder" for hierarchy "Seg7_Decoder:p5_da1" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 77
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 4
-    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 7
-    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX1[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 8
-    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX2[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 9
-    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX3[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 10
-    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX4[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 11
-    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
-    Warning (13410): Pin "HEX5[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 13
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 6
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 6
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 6
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 6
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 6
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 7
 Info (286030): Timing-Driven Synthesis is running
-Warning (20013): Ignored 209 assignments for entity "DE10_LITE_Golden_Top" -- entity does not exist in design
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CLK_10 -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[10] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[11] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[12] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[13] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[14] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[15] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[8] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[9] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_RESET_N -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[10] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[11] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[12] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[8] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[9] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_BA[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_BA[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CAS_N -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CKE -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CLK -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CS_N -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[10] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[11] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[12] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[13] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[14] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[15] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[8] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[9] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_LDQM -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_RAS_N -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_UDQM -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_WE_N -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[10] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[11] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[12] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[13] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[14] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[15] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[16] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[17] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[18] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[19] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[20] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[21] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[22] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[23] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[24] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[25] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[26] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[27] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[28] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[29] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[30] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[31] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[32] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[33] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[34] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[35] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[8] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[9] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_CS_N -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_INT[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_INT[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SCLK -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SDI -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SDO -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to KEY[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to KEY[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[8] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[9] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MAX10_CLK1_50 -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MAX10_CLK2_50 -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[4] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[5] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[6] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[7] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[8] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[9] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_HS -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[0] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[1] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[2] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[3] -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_VS -entity DE10_LITE_Golden_Top was ignored
-    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 7 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 3
-    Warning (15610): No output dependent on input pin "MAX10_CLK1_50" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab2/Quartus/main.v Line: 6
-Info (21057): Implemented 76 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 11 input pins
+Info (21057): Implemented 187 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
     Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 7 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 281 warnings
-    Info: Peak virtual memory: 4800 megabytes
-    Info: Processing ended: Wed Sep 16 15:03:53 2026
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:21
+    Info (21061): Implemented 116 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4861 megabytes
+    Info: Processing ended: Tue Nov 17 20:12:23 2026
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:18
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for main
-Tue Sep 29 11:11:55 2026
+Tue Nov 17 13:04:08 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -14,10 +14,12 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Port Connectivity Checks: "Counter_1Hz:CLK_1"
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  9. Inverted Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Counter_1Sec:CLK_1
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +46,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Sep 29 11:11:55 2026           ;
+; Analysis & Synthesis Status        ; Successful - Tue Nov 17 13:04:08 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; main                                            ;
 ; Top-level Entity Name              ; main                                            ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 64                                              ;
-;     Total combinational functions  ; 64                                              ;
-;     Dedicated logic registers      ; 35                                              ;
-; Total registers                    ; 35                                              ;
-; Total pins                         ; 69                                              ;
+; Total logic elements               ; 83                                              ;
+;     Total combinational functions  ; 83                                              ;
+;     Dedicated logic registers      ; 74                                              ;
+; Total registers                    ; 74                                              ;
+; Total pins                         ; 71                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -172,61 +174,52 @@ on the Quartus Prime software download page.
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                         ; Library ;
 +----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
 ; main.v                           ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v         ;         ;
-; TFlipFlop.v                      ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/TFlipFlop.v    ;         ;
-; Counter_8bit.v                   ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_8bit.v ;         ;
-; Counter_1Hz.v                    ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_1Hz.v  ;         ;
+; Counter_1Sec.v                   ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_1Sec.v ;         ;
+; Hello_Scroll.v                   ; yes             ; User Verilog HDL File  ; C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Hello_Scroll.v ;         ;
 +----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                       ;
-+---------------------------------------------+---------------------+
-; Resource                                    ; Usage               ;
-+---------------------------------------------+---------------------+
-; Estimated Total logic elements              ; 64                  ;
-;                                             ;                     ;
-; Total combinational functions               ; 64                  ;
-; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 29                  ;
-;     -- 3 input functions                    ; 5                   ;
-;     -- <=2 input functions                  ; 30                  ;
-;                                             ;                     ;
-; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 39                  ;
-;     -- arithmetic mode                      ; 25                  ;
-;                                             ;                     ;
-; Total registers                             ; 35                  ;
-;     -- Dedicated logic registers            ; 35                  ;
-;     -- I/O registers                        ; 0                   ;
-;                                             ;                     ;
-; I/O pins                                    ; 69                  ;
-;                                             ;                     ;
-; Embedded Multiplier 9-bit elements          ; 0                   ;
-;                                             ;                     ;
-; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
-; Maximum fan-out                             ; 27                  ;
-; Total fan-out                               ; 337                 ;
-; Average fan-out                             ; 1.42                ;
-+---------------------------------------------+---------------------+
++----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                ;
++---------------------------------------------+------------------------------+
+; Resource                                    ; Usage                        ;
++---------------------------------------------+------------------------------+
+; Estimated Total logic elements              ; 83                           ;
+;                                             ;                              ;
+; Total combinational functions               ; 83                           ;
+; Logic element usage by number of LUT inputs ;                              ;
+;     -- 4 input functions                    ; 8                            ;
+;     -- 3 input functions                    ; 1                            ;
+;     -- <=2 input functions                  ; 74                           ;
+;                                             ;                              ;
+; Logic elements by mode                      ;                              ;
+;     -- normal mode                          ; 58                           ;
+;     -- arithmetic mode                      ; 25                           ;
+;                                             ;                              ;
+; Total registers                             ; 74                           ;
+;     -- Dedicated logic registers            ; 74                           ;
+;     -- I/O registers                        ; 0                            ;
+;                                             ;                              ;
+; I/O pins                                    ; 71                           ;
+;                                             ;                              ;
+; Embedded Multiplier 9-bit elements          ; 0                            ;
+;                                             ;                              ;
+; Maximum fan-out node                        ; Hello_Scroll:CNT_1|pattern~1 ;
+; Maximum fan-out                             ; 74                           ;
+; Total fan-out                               ; 523                          ;
+; Average fan-out                             ; 1.75                         ;
++---------------------------------------------+------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                      ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------+--------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                      ; Entity Name  ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------+--------------+--------------+
-; |main                      ; 64 (0)              ; 35 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 69   ; 0            ; 0          ; |main                                    ; main         ; work         ;
-;    |Counter_1Hz:CLK_1|     ; 52 (52)             ; 27 (27)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_1Hz:CLK_1                  ; Counter_1Hz  ; work         ;
-;    |Counter_8bit:TFF_1|    ; 12 (2)              ; 8 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1                 ; Counter_8bit ; work         ;
-;       |TFlipFlop:TFF_1|    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_1 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_2|    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_2 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_3|    ; 2 (2)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_3 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_4|    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_4 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_5|    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_5 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_6|    ; 2 (2)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_6 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_7|    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_7 ; TFlipFlop    ; work         ;
-;       |TFlipFlop:TFF_8|    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_8bit:TFF_1|TFlipFlop:TFF_8 ; TFlipFlop    ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------+--------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name      ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+--------------+--------------+
+; |main                      ; 83 (0)              ; 74 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |main                    ; main         ; work         ;
+;    |Counter_1Sec:CLK_1|    ; 34 (34)             ; 26 (26)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Counter_1Sec:CLK_1 ; Counter_1Sec ; work         ;
+;    |Hello_Scroll:CNT_1|    ; 49 (49)             ; 48 (48)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Hello_Scroll:CNT_1 ; Hello_Scroll ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -235,23 +228,70 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 35    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 74    ;
+; Number of registers using Synchronous Clear  ; 26    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 48    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------+
-; Port Connectivity Checks: "Counter_1Hz:CLK_1" ;
-+-------+-------+----------+--------------------+
-; Port  ; Type  ; Severity ; Details            ;
-+-------+-------+----------+--------------------+
-; clear ; Input ; Info     ; Stuck at GND       ;
-+-------+-------+----------+--------------------+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; Hello_Scroll:CNT_1|pattern[6]           ; 2       ;
+; Hello_Scroll:CNT_1|pattern[7]           ; 2       ;
+; Hello_Scroll:CNT_1|pattern[8]           ; 2       ;
+; Hello_Scroll:CNT_1|pattern[9]           ; 2       ;
+; Hello_Scroll:CNT_1|pattern[10]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[14]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[15]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[16]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[17]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[18]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[22]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[23]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[25]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[26]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[31]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[32]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[35]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[39]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[40]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[41]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[42]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[43]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[44]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[45]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[46]          ; 2       ;
+; Hello_Scroll:CNT_1|pattern[47]          ; 2       ;
+; Total number of inverted registers = 26 ;         ;
++-----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |main|Counter_1Sec:CLK_1|count[17]   ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |main|Hello_Scroll:CNT_1|pattern[19] ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |main|Hello_Scroll:CNT_1|pattern[35] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Counter_1Sec:CLK_1 ;
++----------------+----------+-------------------------------------+
+; Parameter Name ; Value    ; Type                                ;
++----------------+----------+-------------------------------------+
+; CLOCK_CYCLES   ; 50000000 ; Signed Integer                      ;
++----------------+----------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -259,21 +299,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 69                          ;
-; cycloneiii_ff         ; 35                          ;
-;     plain             ; 35                          ;
-; cycloneiii_lcell_comb ; 66                          ;
+; boundary_port         ; 71                          ;
+; cycloneiii_ff         ; 74                          ;
+;     ENA               ; 48                          ;
+;     SCLR              ; 26                          ;
+; cycloneiii_lcell_comb ; 110                         ;
 ;     arith             ; 25                          ;
 ;         2 data inputs ; 25                          ;
-;     normal            ; 41                          ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 5                           ;
-;         4 data inputs ; 29                          ;
+;     normal            ; 85                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 27                          ;
+;         2 data inputs ; 48                          ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 8                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.50                        ;
-; Average LUT depth     ; 3.29                        ;
+; Max LUT depth         ; 3.50                        ;
+; Average LUT depth     ; 1.77                        ;
 +-----------------------+-----------------------------+
 
 
@@ -292,7 +333,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Tue Sep 29 11:11:48 2026
+    Info: Processing started: Tue Nov 17 13:04:00 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off main -c main
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -324,65 +365,36 @@ Info (12021): Found 1 design units, including 1 entities, in source file counter
     Info (12023): Found entity 1: Counter_8bit File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_8bit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file counter_1hz.v
     Info (12023): Found entity 1: Counter_1Hz File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_1Hz.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file counter_16bit.v
+    Info (12023): Found entity 1: Counter_16bit File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_16bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lpm_counter_16bit.v
+    Info (12023): Found entity 1: LPM_Counter_16bit File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/LPM_Counter_16bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file counter_1sec.v
+    Info (12023): Found entity 1: Counter_1Sec File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_1Sec.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file digit_counter.v
+    Info (12023): Found entity 1: Digit_Counter File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Digit_Counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hello_scroll.v
+    Info (12023): Found entity 1: Hello_Scroll File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Hello_Scroll.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file key0_release.v
+    Info (12023): Found entity 1: KEY0_Release File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/KEY0_Release.v Line: 1
 Info (12127): Elaborating entity "main" for the top level hierarchy
-Info (12128): Elaborating entity "Counter_1Hz" for hierarchy "Counter_1Hz:CLK_1" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 14
-Info (12128): Elaborating entity "Counter_8bit" for hierarchy "Counter_8bit:TFF_1" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 21
-Info (12128): Elaborating entity "TFlipFlop" for hierarchy "Counter_8bit:TFF_1|TFlipFlop:TFF_1" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/Counter_8bit.v Line: 24
+Info (12128): Elaborating entity "Counter_1Sec" for hierarchy "Counter_1Sec:CLK_1" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 160
+Info (12128): Elaborating entity "Hello_Scroll" for hierarchy "Hello_Scroll:CNT_1" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 167
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 4
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 4
-    Warning (13410): Pin "HEX0[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
-    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
-    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 6
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 5
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 8 input pin(s) that do not drive logic
+Warning (21074): Design contains 11 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
     Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
     Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
@@ -390,15 +402,18 @@ Warning (21074): Design contains 8 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
     Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 2
-Info (21057): Implemented 133 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 11 input pins
+    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 3
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/jddow/OneDrive/Documents/Github/ENCE_3100_Jefferson_Downes_2026/Lab4/Quartus/main.v Line: 3
+Info (21057): Implemented 154 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
     Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 64 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 61 warnings
+    Info (21061): Implemented 83 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
     Info: Peak virtual memory: 4861 megabytes
-    Info: Processing ended: Tue Sep 29 11:11:55 2026
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Processing ended: Tue Nov 17 13:04:08 2026
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:21
 
 
